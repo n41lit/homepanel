@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Include Bootstrap CSS from CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root{
+            --back-color: rgb(47, 30, 71);
+        }
+        body {
+            font-family: "Poppins";
+            background-color: var(--back-color);
+            text-align: center;
+        }
+        p {
+            color:white;
+            font-weight: 200;
+            
+        }
+        h1 {
+            color: white;
+            font-weight: 600;
+            margin-top: 12%;
+            margin-bottom: 0,5%;
+        }
+        h2{
+            color: white;
+            font-weight: 400;
+            margin-bottom: 2%;
+            padding-top: 2%;
+            padding-bottom: 0.5%;
+        }
+        h3{
+            color: white;
+            font-weight: 300;
+
+        }
+        a{
+            color: rgb(228, 111, 15);
+            text-decoration: none;
+            font-weight: 100;
+        }
+        a:hover{
+            color:orangered;
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background-color: rgb(206, 56, 2);
+            text-align: right;
+            padding-right: 5%;
+        }
+        hr {
+            clear: both;
+            visibility: hidden;
+        }
+    </style>
+
+    <title>Homepanel</title>
+  </head>
+  <body>
+      <br>
+
+    <!-- Header/Navbar--> 
+        <div class="container">
+            <div class="row">
+                <!-- Time -->
+                <div class="col text-start">
+                    <p id="Date"></p>
+                    <h1 id="greeting"></h1>
+                </div>
+
+                <div class="col text-end">
+                    <p id="Time" style="margin-bottom: 0px;"></p>
+                    <p style="margin-bottom: 0px" >28.1°C</p>
+                    <p style="margin-bottom: 0px;">20%</p>
+                    <a class="bi bi-gear" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings" style="margin-top: 0px;"></a>
+                </div>
+
+            </div>
+
+        </div>
+
+    <hr>
+
+    <!-- Network Device List-->
+    <div class="container">
+        <div class="row">
+            <h2>NETWORK DEVICES</h2>
+        </div>
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+            <div class="col">
+                <h3><span class="material-icons">storage</span> NAS</h3>
+                <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                <p>NAS #1</p>
+                <a href="https://10.10.10.2">10.10.10.10</a>
+                
+            </div>
+            <div class="col">
+                <h3><span class="material-icons">storage</span> Plex</h3>
+                <span hidden="hidden "id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                <span id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                <p>Media Server</p>
+                <a href="https://10.10.10.10">10.10.20.5</a>
+            </div>
+            <div class="col">
+                <h3><span class="material-icons">storage</span> Paperlessng</h3>
+                <span hidden="hidden" id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                <span  id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                <p>Go away papers!</p>
+                <a href="https://10.10.10.10">10.10.10.30</a>
+            </div>
+            <div class="col">
+                <h3><span class="material-icons">storage</span> Router</h3>
+                <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                <p>Router Interface</p>
+                <a href="https://10.10.10.10">10.10.10.0</a>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Links-->
+    <div class="container">
+        <div class="row">
+            <h2>BOOKMARKS</h2>
+        </div>
+        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+            <div class="col">
+                <h3>Music</h3>
+                <a href="https://prontonmail.ch">spotify</a><br>
+                <a href="https://prontonmail.ch">deezer</a><br>
+                <a href="https://prontonmail.ch">tidal</a><br>
+                <a href="https://prontonmail.ch">yt music</a><br>
+                <a href="https://prontonmail.ch">pandora</a><br>
+            </div>
+            <div class="col">
+                <h3>Social Media</h3>
+                <a href="https://prontonmail.ch">reddit</a><br>
+                <a href="https://prontonmail.ch">twitter</a><br>
+                <a href="https://prontonmail.ch">tiktok</a><br>
+                <a href="https://prontonmail.ch">youtube</a><br>
+                <a href="https://prontonmail.ch">facebook</a><br>
+                <a href="https://prontonmail.ch">discord</a><br>
+
+            </div>
+            <div class="col">
+                <h3>Programming</h3>
+                <a href="https://prontonmail.ch">github</a><br>
+                <a href="https://prontonmail.ch">devdocs</a><br>
+                <a href="https://prontonmail.ch">w3</a><br>
+            </div>
+            <div class="col">
+                <h3>News</h3>
+                <a href="https://prontonmail.ch">srf</a><br>
+                <a href="https://prontonmail.ch">news</a><br>
+                <a href="https://prontonmail.ch">bbc</a><br>
+                <a href="https://prontonmail.ch">new york times</a><br>
+            </div>
+            <div class="col">
+                <h3>Games</h3>
+                <a href="https://prontonmail.ch">steam</a><br>
+                <a href="https://prontonmail.ch">gog</a><br>
+                <a href="https://prontonmail.ch">uplay</a><br>
+
+            </div>
+            <div class="col">
+                <h3>Storage</h3>
+                <a href="https://prontonmail.ch">g-drive</a><br>
+                <a href="https://prontonmail.ch">mega</a><br>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
+
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+            <div class="offcanvas-body" style="text-align: start;">
+            <h5>Looks</h5>
+          <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="switchDarkmode" checked>
+              <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
+          </div>
+          <div class="input-group mb-3">
+            <input id="submitNameButton"type="text" class="form-control" placeholder="Name" id="inputUsername">
+            <button class="btn btn-outline-primary" type="button" id="submitNameEntry">Confirm</button>
+          </div>
+
+
+          <hr>
+          <h5>Location and Time</h5>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="switchHumidity" checked>
+            <label class="form-check-label" for="switchHumidity">Show Humidity</label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="switch12hr" checked>
+            <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
+          </div>
+          <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="radioCelcius" >
+                <label class="form-check-label" for="radioCelcius">Celcius</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="radioFahrenheit" >
+            <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
+          </div>
+          <hr>
+
+        </div>
+
+        </div>
+      </div>
+    
+    <!-- Main JS -->
+    <script>
+        //eventHandler
+
+
+
+        //setLinks
+
+        function setLink(linkName){
+            localStorage.setItem("Name", linkName);
+        }
+        
+        //getLinks
+
+        function getLink(){
+            var linkName = localStorage.getItem("Name");
+            return linkName
+        }
+
+        //PingFunction
+        {
+        var image = new Image();
+        var Ping1Fail = document.getElementById("BadgePing1Fail")
+        var Ping1Success = document.getElementById("BadgePing1Success")
+        var Ping1Hold = document.getElementById("BadgePing1Hold")
+        image.src = "http://10.10.10.2:5000/webman/favicon.ico?v=25426"
+        setTimeout
+        (
+            function()
+            {
+                if ( !image.complete || !image.naturalWidth )
+                    Ping1Hold.hidden = "hidden",
+                    Ping1Fail.hidden = "";
+                else
+                    Ping1Hold.hidden = "hidden",
+                    Ping1Success.hidden = "";
+                },
+                1000
+            )
+        }
+
+        //GET and SET Settings in localStorage
+        var Username = document.getElementById("inputUsername");
+
+        function setSettings() {
+            alert("It has worked");
+        }
+
+        //Date and Time
+
+        function getTime() {
+            let date = new Date(),
+                sec = date.getSeconds(),
+                min = date.getMinutes(),
+                hour = date.getHours();
+
+            return"" +
+                (hour < 10 ? ("0" + hour) : hour)+ ":" + (min < 10 ?("0" + min) : min) + ":" + (sec < 10 ?("0" + sec) : sec);
+        }
+
+        var weekday = new Array(7);
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "FriYAY";
+            weekday[6] = "Sunday";
+
+        var greeting = new Array(10);
+            greeting[0] = "Hey, master";
+            greeting[1] = "Its showtime!";
+            greeting[2] = "Howdy, Partner";
+            greeting[3] = "Welcome to the club";
+            greeting[4] = "Sup?";
+            greeting[5] = "Hiya! Have a nice day.";
+            greeting[6] = "Hello Stranger";
+            greeting[7] = "Whats up buttercup?";
+            greeting[8] = "Long-time no see";
+            greeting[9] = "Moin";
+
+        var greetingRNG = Math.floor(greeting.length*Math.random())
+
+        function getDate() {
+            var dt = new Date
+
+            var DD = ("0" + dt.getDate()).slice(-2);
+            var MM = ("0" + (dt.getMonth() + 1)).slice(-2);
+            var YY = dt.getFullYear();
+            var DAY = weekday[dt.getDay()];
+
+            return "" + DAY + ", " + (DD + "." + MM + "." + YY );
+        }
+
+        function getGreeting() {
+            return greeting[greetingRNG]
+        }
+
+
+
+        window.onload = () => {
+            document.getElementById("Time").innerHTML = getTime();
+            document.getElementById("Date").innerHTML = getDate();
+            document.getElementById("greeting").innerHTML = getGreeting();
+
+            setInterval( () => {
+                document.getElementById("Time").innerHTML =getTime();
+            },100)
+        }
+
+        document.getElementById("inputUsername").addEventListener("change", setSettings());
+    </script>
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+
+  </body>
+  <footer>
+    <p>made in 🇨🇭 by Dario Brasnic und Simon Camathias</p>
+
+  </footer>
