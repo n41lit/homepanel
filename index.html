@@ -179,55 +179,58 @@
                 <a href="https://prontonmail.ch">steam</a><br>
                 <a href="https://prontonmail.ch">gog</a><br>
                 <a href="https://prontonmail.ch">uplay</a><br>
-
             </div>
             <div class="col">
                 <h3>Storage</h3>
                 <a href="https://prontonmail.ch">g-drive</a><br>
                 <a href="https://prontonmail.ch">mega</a><br>
-
             </div>
         </div>
 
     </div>
 
+    <!--Offcanvas Settings-->
     <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
-
+        <!-- Header-->
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-            <div class="offcanvas-body" style="text-align: start;">
-            <h5>Looks</h5>
-          <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="switchDarkmode" checked>
-              <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
-          </div>
-          <div class="input-group mb-3">
-            <input id="submitNameButton"type="text" class="form-control" placeholder="Name" id="inputUsername">
-            <button class="btn btn-outline-primary" type="button" id="submitNameEntry">Confirm</button>
-          </div>
+        <!-- Body-->
+        <div class="offcanvas-body" style="text-align: start;">
+            <form id="formSettings">
+                <h5>Looks</h5>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="switchDarkmode" checked>
+                    <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
+                </div>
+                <div class="input-group mb-3">
+                    <input id="submitNameButton"type="text" class="form-control" placeholder="Name" id="inputUsername">
+                    <button class="btn btn-outline-primary" type="button" id="submitNameEntry">Confirm</button>
+                </div>
 
+                <hr>
 
-          <hr>
-          <h5>Location and Time</h5>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="switchHumidity" checked>
-            <label class="form-check-label" for="switchHumidity">Show Humidity</label>
-          </div>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="switch12hr" checked>
-            <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
-          </div>
-          <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="radioCelcius" >
-                <label class="form-check-label" for="radioCelcius">Celcius</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="radioFahrenheit" >
-            <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
-          </div>
-          <hr>
+                <h5>Location and Time</h5>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="switchHumidity" checked>
+                    <label class="form-check-label" for="switchHumidity">Show Humidity</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="switch12hr" checked>
+                    <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="radioCelcius" >
+                    <label class="form-check-label" for="radioCelcius">Celcius</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="radioFahrenheit" >
+                    <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
 
         </div>
 
@@ -236,30 +239,19 @@
     
     <!-- Main JS -->
     <script>
-        //eventHandler
-
-
-
-        //setLinks
-
-        function setLink(linkName){
-            localStorage.setItem("Name", linkName);
-        }
-        
-        //getLinks
-
-        function getLink(){
-            var linkName = localStorage.getItem("Name");
-            return linkName
+        //Settings
+        function setSettings(){
+            alert("Settings saved")
         }
 
         //PingFunction
+
         {
         var image = new Image();
         var Ping1Fail = document.getElementById("BadgePing1Fail")
         var Ping1Success = document.getElementById("BadgePing1Success")
         var Ping1Hold = document.getElementById("BadgePing1Hold")
-        image.src = "http://10.10.10.2:5000/webman/favicon.ico?v=25426"
+        image.src = "https://www.google.ch/favicon.ico"
         setTimeout
         (
             function()
@@ -275,21 +267,15 @@
             )
         }
 
-        //GET and SET Settings in localStorage
-        var Username = document.getElementById("inputUsername");
-
-        function setSettings() {
-            alert("It has worked");
-        }
 
         //Date and Time
-
         function getTime() {
             let date = new Date(),
                 sec = date.getSeconds(),
                 min = date.getMinutes(),
                 hour = date.getHours();
 
+            //Return and Fromat Output
             return"" +
                 (hour < 10 ? ("0" + hour) : hour)+ ":" + (min < 10 ?("0" + min) : min) + ":" + (sec < 10 ?("0" + sec) : sec);
         }
@@ -332,8 +318,7 @@
             return greeting[greetingRNG]
         }
 
-
-
+        //Loading Routine
         window.onload = () => {
             document.getElementById("Time").innerHTML = getTime();
             document.getElementById("Date").innerHTML = getDate();
@@ -343,8 +328,8 @@
                 document.getElementById("Time").innerHTML =getTime();
             },100)
         }
-
-        document.getElementById("inputUsername").addEventListener("change", setSettings());
+    
+        document.getElementById("formSettings").addEventListener("submit", function(){setSettings()});
     </script>
     
     <!-- Option 1: Bootstrap Bundle with Popper -->
