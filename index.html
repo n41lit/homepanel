@@ -17,6 +17,7 @@
         }
         body {
             font-family: "Poppins";
+            /*background: url(https://pixabay.com/get/gc7dc7a13cc78a42f2e9fa6c7fe565bcf5b876e7c98f25e8f309d96129db1b5710f5a5211c47d3694d42364d874154bbe_1920.jpg) no-repeat center center fixed;*/
             background-color: var(--back-color);
             text-align: center;
         }
@@ -64,193 +65,276 @@
             clear: both;
             visibility: hidden;
         }
+
     </style>
 
     <title>Homepanel</title>
   </head>
   <body>
       <br>
+        <div id="backgroundUnblurred">
+            <!-- Header/Navbar -->
+            <div class="container">
+                <div class="row">
+                    <!-- Time -->
+                    <div class="col text-start">
+                        <p id="Date"></p>
+                        <h1 id="greeting"></h1>
+                    </div>
 
-    <!-- Header/Navbar--> 
+                    <div class="col text-end">
+                        <p id="Time" style="margin-bottom: 0px;"></p>
+                        <p style="margin-bottom: 0px" >28.1°C</p>
+                        <p style="margin-bottom: 0px;">20%</p>
+                        <a class="bi bi-gear" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings" style="margin-top: 0px;"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        <hr>
+
+        <!-- Network Device List-->
         <div class="container">
             <div class="row">
-                <!-- Time -->
-                <div class="col text-start">
-                    <p id="Date"></p>
-                    <h1 id="greeting"></h1>
+                <h2>NETWORK DEVICES</h2>
+            </div>
+            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+                <div class="col">
+                    <h3><span class="material-icons">storage</span> NAS</h3>
+                    <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                    <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                    <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                    <p>NAS #1</p>
+                    <a href="https://10.10.10.2">10.10.10.10</a>
                 </div>
-
-                <div class="col text-end">
-                    <p id="Time" style="margin-bottom: 0px;"></p>
-                    <p style="margin-bottom: 0px" >28.1°C</p>
-                    <p style="margin-bottom: 0px;">20%</p>
-                    <a class="bi bi-gear" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings" style="margin-top: 0px;"></a>
+                <div class="col">
+                    <h3><span class="material-icons">storage</span> Plex</h3>
+                    <span hidden="hidden "id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                    <span id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                    <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                    <p>Media Server</p>
+                    <a href="https://10.10.10.10">10.10.20.5</a>
                 </div>
+                <div class="col">
+                    <h3><span class="material-icons">storage</span> Paperlessng</h3>
+                    <span hidden="hidden" id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                    <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                    <span  id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                    <p>Go away papers!</p>
+                    <a href="https://10.10.10.10">10.10.10.30</a>
+                </div>
+                <div class="col">
+                    <h3><span class="material-icons">storage</span> Router</h3>
+                    <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
+                    <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
+                    <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
+                    <p>Router Interface</p>
+                    <a href="https://10.10.10.10">10.10.10.0</a>
+                </div>
+            </div>
+        </div>
 
+        <hr>
+
+        <!-- Links-->
+        <div class="container">
+            <div class="row">
+                <h2>BOOKMARKS</h2>
+            </div>
+            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+                <div class="col">
+                    <div class="card" style="opacity: 0.4; border-radius: 35px;" id="bookmarkcontainer" >
+                        <h3>Music</h3>
+                        <a href="https://prontonmail.ch">spotify</a><br>
+                        <a href="https://prontonmail.ch">deezer</a><br>
+                        <a href="https://prontonmail.ch">tidal</a><br>
+                        <a href="https://prontonmail.ch">yt music</a><br>
+                        <a href="https://prontonmail.ch">pandora</a><br>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Social Media</h3>
+                    <a href="https://prontonmail.ch">reddit</a><br>
+                    <a href="https://prontonmail.ch">twitter</a><br>
+                    <a href="https://prontonmail.ch">tiktok</a><br>
+                    <a href="https://prontonmail.ch">youtube</a><br>
+                    <a href="https://prontonmail.ch">facebook</a><br>
+                    <a href="https://prontonmail.ch">discord</a><br>
+
+                </div>
+                <div class="col">
+                    <h3>Programming</h3>
+                    <a href="https://prontonmail.ch">github</a><br>
+                    <a href="https://prontonmail.ch">devdocs</a><br>
+                    <a href="https://prontonmail.ch">w3</a><br>
+                </div>
+                <div class="col">
+                    <h3>News</h3>
+                    <a href="https://prontonmail.ch">srf</a><br>
+                    <a href="https://prontonmail.ch">news</a><br>
+                    <a href="https://prontonmail.ch">bbc</a><br>
+                    <a href="https://prontonmail.ch">new york times</a><br>
+                </div>
+                <div class="col">
+                    <h3>Games</h3>
+                    <a href="https://prontonmail.ch">steam</a><br>
+                    <a href="https://prontonmail.ch">gog</a><br>
+                    <a href="https://prontonmail.ch">uplay</a><br>
+                </div>
+                <div class="col">
+                    <h3>Storage</h3>
+                    <a href="https://prontonmail.ch">g-drive</a><br>
+                    <a href="https://prontonmail.ch">mega</a><br>
+                </div>
             </div>
 
         </div>
 
-    <hr>
+        <!--Offcanvas Settings-->
+        <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
+            <!-- Header-->
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Body-->
+            <div class="offcanvas-body" style="text-align: start;">
+                <form id="formSettings">
+                    <h5>Looks</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchDarkmode">
+                        <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Name" id="inputUsername">
+                    </div>
 
-    <!-- Network Device List-->
-    <div class="container">
-        <div class="row">
-            <h2>NETWORK DEVICES</h2>
-        </div>
-        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            <div class="col">
-                <h3><span class="material-icons">storage</span> NAS</h3>
-                <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>NAS #1</p>
-                <a href="https://10.10.10.2">10.10.10.10</a>
-                
+                    <hr>
+
+                    <h5>Location and Time</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchHumidity">
+                        <label class="form-check-label" for="switchHumidity">Show Humidity</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switch12hr" checked>
+                        <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Temparature" id="radioCelcius" value="1">
+                        <label class="form-check-label" for="radioCelcius">Celcius</label>
+                    </div>
+                    <div class="form-check form-check-inline"></div>
+                        <input class="form-check-input" type="radio" name="Temparature" id="radioFahrenheit" value="2">
+                        <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
+                    </div>
+
+                    <hr>
+
+                    <h5>Network Device Configuration</h5>
+
+                    <h5>Bookmark Configuration</h5>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+
             </div>
-            <div class="col">
-                <h3><span class="material-icons">storage</span> Plex</h3>
-                <span hidden="hidden "id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>Media Server</p>
-                <a href="https://10.10.10.10">10.10.20.5</a>
-            </div>
-            <div class="col">
-                <h3><span class="material-icons">storage</span> Paperlessng</h3>
-                <span hidden="hidden" id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span  id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>Go away papers!</p>
-                <a href="https://10.10.10.10">10.10.10.30</a>
-            </div>
-            <div class="col">
-                <h3><span class="material-icons">storage</span> Router</h3>
-                <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>Router Interface</p>
-                <a href="https://10.10.10.10">10.10.10.0</a>
+
             </div>
         </div>
     </div>
-
-    <hr>
-
-    <!-- Links-->
-    <div class="container">
-        <div class="row">
-            <h2>BOOKMARKS</h2>
-        </div>
-        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            <div class="col">
-                <h3>Music</h3>
-                <a href="https://prontonmail.ch">spotify</a><br>
-                <a href="https://prontonmail.ch">deezer</a><br>
-                <a href="https://prontonmail.ch">tidal</a><br>
-                <a href="https://prontonmail.ch">yt music</a><br>
-                <a href="https://prontonmail.ch">pandora</a><br>
-            </div>
-            <div class="col">
-                <h3>Social Media</h3>
-                <a href="https://prontonmail.ch">reddit</a><br>
-                <a href="https://prontonmail.ch">twitter</a><br>
-                <a href="https://prontonmail.ch">tiktok</a><br>
-                <a href="https://prontonmail.ch">youtube</a><br>
-                <a href="https://prontonmail.ch">facebook</a><br>
-                <a href="https://prontonmail.ch">discord</a><br>
-
-            </div>
-            <div class="col">
-                <h3>Programming</h3>
-                <a href="https://prontonmail.ch">github</a><br>
-                <a href="https://prontonmail.ch">devdocs</a><br>
-                <a href="https://prontonmail.ch">w3</a><br>
-            </div>
-            <div class="col">
-                <h3>News</h3>
-                <a href="https://prontonmail.ch">srf</a><br>
-                <a href="https://prontonmail.ch">news</a><br>
-                <a href="https://prontonmail.ch">bbc</a><br>
-                <a href="https://prontonmail.ch">new york times</a><br>
-            </div>
-            <div class="col">
-                <h3>Games</h3>
-                <a href="https://prontonmail.ch">steam</a><br>
-                <a href="https://prontonmail.ch">gog</a><br>
-                <a href="https://prontonmail.ch">uplay</a><br>
-            </div>
-            <div class="col">
-                <h3>Storage</h3>
-                <a href="https://prontonmail.ch">g-drive</a><br>
-                <a href="https://prontonmail.ch">mega</a><br>
-            </div>
-        </div>
-
-    </div>
-
-    <!--Offcanvas Settings-->
-    <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
-        <!-- Header-->
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <!-- Body-->
-        <div class="offcanvas-body" style="text-align: start;">
-            <form id="formSettings">
-                <h5>Looks</h5>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="switchDarkmode" checked>
-                    <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
-                </div>
-                <div class="input-group mb-3">
-                    <input id="submitNameButton"type="text" class="form-control" placeholder="Name" id="inputUsername">
-                    <button class="btn btn-outline-primary" type="button" id="submitNameEntry">Confirm</button>
-                </div>
-
-                <hr>
-
-                <h5>Location and Time</h5>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="switchHumidity" checked>
-                    <label class="form-check-label" for="switchHumidity">Show Humidity</label>
-                </div>
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="switch12hr" checked>
-                    <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="radioCelcius" >
-                    <label class="form-check-label" for="radioCelcius">Celcius</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" id="radioFahrenheit" >
-                    <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
-                </div>
-                <hr>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </form>
-
-        </div>
-
-        </div>
-      </div>
-    
     <!-- Main JS -->
     <script>
+        var Username1 ="";
+
+        //Loading Routine
+        window.onload = () => {
+            getSettings();
+            document.getElementById("Time").innerHTML = getTime();
+            document.getElementById("Date").innerHTML = getDate();
+            document.getElementById("greeting").innerHTML = getGreeting();
+
+            setInterval( () => {
+                document.getElementById("Time").innerHTML =getTime();
+            },100)
+        }
+        //Weather
+        function getTemp(City){
+
+        }
+        function getHum(City){
+
+        }
+        
         //Settings
+        var newHumidity = document.getElementById("switchHumidity");
+        var newDarkmode = document.getElementById("switchDarkmode");
+        var newUsername = document.getElementById("inputUsername");
+        var new12hr = document.getElementById("switch12hr");
+        var newcel = document.getElementById("radioCelcius");
+
         function setSettings(){
-            alert("Settings saved")
+            window.localStorage.setItem("Humidity", newHumidity.checked);
+            window.localStorage.setItem("12hr", new12hr.checked);
+            window.localStorage.setItem("Darkmode", newDarkmode.checked);
+            if (newUsername.value == "") {
+            } else {
+                window.localStorage.setItem("Username", newUsername.value);
+            }
+            window.localStorage.setItem("Celsius", newcel.checked);
+        }
+
+        var Humidity = "";
+        var Darkmode = "";
+        var hr12 = "";
+        var cel = "";
+        function getSettings(){
+            //Import Username and set Placeholder in Field
+            Username1 = window.localStorage.getItem("Username");
+            document.getElementById("inputUsername").placeholder=Username1;
+            //Get Darkmode "boolean" and set the toggle
+            Darkmode = window.localStorage.getItem("Darkmode");
+            if (Darkmode == "true") {
+                document.getElementById("switchDarkmode").checked = true;
+            } else {
+            document.getElementById("switchDarkmode").checked = false;
+            }
+            //Get Humidity boolean and set the toggle
+            Humidity = window.localStorage.getItem("Humidity");
+            if (Humidity == "true"){
+                document.getElementById("switchHumidity").checked = true;
+            } else {
+                document.getElementById("switchHumidity").checked = false;
+            }
+            //Get 12 Hr an set the toggle
+            hr12 = window.localStorage.getItem("12hr");
+            if (hr12 == "true"){
+                document.getElementById("switch12hr").checked = true;
+            } else {
+                document.getElementById("switch12hr").checked = false;
+            }
+            //Get Temp and set Radio
+            cel = window.localStorage.getItem("Celsius");
+            if (cel == "true") {
+                //document.getElementById("radioFahrenheit").checked = null;
+                //document.getElementById("radioCelsius").checked = true;
+            } else {
+                //document.getElementById("radioCelsius").checked = null;
+                //document.getElementById("radioFahrenheit").checked = true;
+            }
+
+
         }
 
         //PingFunction
 
         {
         var image = new Image();
-        var Ping1Fail = document.getElementById("BadgePing1Fail")
-        var Ping1Success = document.getElementById("BadgePing1Success")
-        var Ping1Hold = document.getElementById("BadgePing1Hold")
+        var Ping1Fail = document.getElementById("BadgePing1Fail");
+        var Ping1Success = document.getElementById("BadgePing1Success");
+        var Ping1Hold = document.getElementById("BadgePing1Hold");
         image.src = "https://www.google.ch/favicon.ico"
         setTimeout
         (
@@ -275,9 +359,18 @@
                 min = date.getMinutes(),
                 hour = date.getHours();
 
+            var ampm = hour >= 12 ? "pm" : "am";
+
             //Return and Fromat Output
+            if (hr12 == "true"){
+                hour = hour % 12;
+                hour = hour ? hour : 12; //0 to 12 conversion
+                return""+
+                    hour + ":" + (min < 10 ?("0" + min): min) + ":" + (sec < 10 ?("0" + sec) : sec) + " " + ampm;
+            } else {
             return"" +
                 (hour < 10 ? ("0" + hour) : hour)+ ":" + (min < 10 ?("0" + min) : min) + ":" + (sec < 10 ?("0" + sec) : sec);
+            }
         }
 
         var weekday = new Array(7);
@@ -290,18 +383,18 @@
             weekday[6] = "Sunday";
 
         var greeting = new Array(10);
-            greeting[0] = "Hey, master";
-            greeting[1] = "Its showtime!";
-            greeting[2] = "Howdy, Partner";
-            greeting[3] = "Welcome to the club";
-            greeting[4] = "Sup?";
-            greeting[5] = "Hiya! Have a nice day.";
-            greeting[6] = "Hello Stranger";
-            greeting[7] = "Whats up buttercup?";
-            greeting[8] = "Long-time no see";
-            greeting[9] = "Moin";
+            greeting[0] = "Hey, ";
+            greeting[1] = "Its showtime, ";
+            greeting[2] = "Howdy, ";
+            greeting[3] = "Welcome to the club, ";
+            greeting[4] = "Hi, ";
+            greeting[5] = "Hiya! Have a nice day,";
+            greeting[6] = "Hello, ";
+            greeting[7] = "Whats up, ";
+            greeting[8] = "Long-time no see, ";
+            greeting[9] = "Moin, ";
 
-        var greetingRNG = Math.floor(greeting.length*Math.random())
+        var greetingRNG = Math.floor(greeting.length*Math.random());
 
         function getDate() {
             var dt = new Date
@@ -315,19 +408,9 @@
         }
 
         function getGreeting() {
-            return greeting[greetingRNG]
+            return greeting[greetingRNG]+ Username1;
         }
 
-        //Loading Routine
-        window.onload = () => {
-            document.getElementById("Time").innerHTML = getTime();
-            document.getElementById("Date").innerHTML = getDate();
-            document.getElementById("greeting").innerHTML = getGreeting();
-
-            setInterval( () => {
-                document.getElementById("Time").innerHTML =getTime();
-            },100)
-        }
     
         document.getElementById("formSettings").addEventListener("submit", function(){setSettings()});
     </script>
