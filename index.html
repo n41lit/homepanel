@@ -101,6 +101,12 @@
                     </div>
 
                 </div>
+                <div class="row">
+                    <form id="searchBox" class="input-group mb-3">
+                        <input type="search" placeholder="Search" id="searchQuery" class="form-control">
+                        <button class="btn btn-primary">Search</button>
+                    </form>
+                </div>
 
             </div>
 
@@ -313,6 +319,10 @@
                         <input class="form-check-input" type="checkbox" id="switchDarkmode">
                         <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
                     </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchFooter">
+                        <label class="form-check-label" for="switchFooter">Show Footer</label>
+                    </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Name" id="inputUsername">
                     </div>
@@ -321,12 +331,12 @@
 
                     <h5>Location and Time</h5>
                     <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="switchHumidity">
-                        <label class="form-check-label" for="switchHumidity">Show Humidity</label>
-                    </div>
-                    <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="switch12hr" checked>
                         <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchHumidity">
+                        <label class="form-check-label" for="switchHumidity">Show Humidity</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="Temparature" id="radioCelcius" value="1">
@@ -336,17 +346,27 @@
                         <input class="form-check-input" type="radio" name="Temparature" id="radioFahrenheit" value="2">
                         <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
                     </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" id="inputUsername">
+                    </div>
 
                     <hr>
 
-                    <h5>Footer</h5>
-                    <div class= "form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="switchFooter">
-                        <label class="form-check-label" for="switchFooter">Show Footer</label>
+                    <h5>Search Box</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchSearch">
+                        <label class="form-check-label" for="switchSearch">Enable Search</label>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Footer Text" id="inputFooterText">
-                    </div>
+                    <select class="form-select" id="selectSearchProvider">
+                        <option selected>Select Search Provider</option>
+                        <option value="0">DuckDuckGo</option>
+                        <option value="1">Google</option>
+                        <option value="2">Qwant</option>
+                      </select>
+
+
+
+
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
@@ -358,6 +378,20 @@
     </div>
     <!-- Main JS -->
     <script>
+        const formSearch = document.getElementById("searchBox");
+        const searchQuery = document.getElementById("searchQuery")
+        var searchProvider = new Array(3);
+            searchProvider[0] = "https://www.duckduckgo.com/";
+            searchProvider[1] = "https://google.com/search?q=";
+            searchProvider[2] = "https://qwant.com/?q=";
+
+        function submitSearchQuery(event) {
+            event.preventDefault();
+            var searchurl = searchProvider[window.localStorage.getItem("SearchProvider")] + searchQuery.value;
+            var win = window.open(searchurl, "_blank");
+            win.focus();
+        }
+
         var Username1 ="";
 
         //Loading Routine
@@ -384,10 +418,11 @@
         var newDarkmode = document.getElementById("switchDarkmode");
         var newUsername = document.getElementById("inputUsername");
         var newFooter = document.getElementById("switchFooter");
-        var newFooterText = document.getElementById("inputFooterText")
         var new12hr = document.getElementById("switch12hr");
         var newcel = document.getElementById("radioCelcius");
         var newNoDevices = document.getElementById("selectNoDevices");
+        var newSwitchSearch = document.getElementById("switchSearch");
+        var newSearchProvider = document.getElementById("selectSearchProvider")
         var nameDevices = new Array(8);
             nameDevices[0] = "nameDevice1";
             nameDevices[1] = "nameDevice2";
@@ -444,10 +479,8 @@
             window.localStorage.setItem("12hr", new12hr.checked);
             window.localStorage.setItem("Darkmode", newDarkmode.checked);
             window.localStorage.setItem("Footer", newFooter.checked);
-            if (newFooterText.value == "") {
-            } else {
-                window.localStorage.setItem("FooterText", newFooterText.value);
-            }
+            window.localStorage.setItem("Search", newSwitchSearch.checked);
+            window.localStorage.setItem("SearchProvider", newSearchProvider.value);
             if (newUsername.value == "") {
             } else {
                 window.localStorage.setItem("Username", newUsername.value);
@@ -480,6 +513,7 @@
                 window.localStorage.setItem(k, document.getElementById(k).value);
                 }
             }
+
         }
 
         var Humidity = "";
@@ -487,10 +521,12 @@
         var hr12 = "";
         var cel = "";
         var noDevices = "";
-        var footerText = "";
         var footer ="";
+        var switchSearch="";
 
         function getSettings(){
+            //Search Provider
+            document.getElementById("selectSearchProvider").value = window.localStorage.getItem("SearchProvider");
             //Import Username and set Placeholder in Field
             Username1 = window.localStorage.getItem("Username");
             document.getElementById("inputUsername").placeholder=Username1;
@@ -519,12 +555,7 @@
             //Get Number of configured Devices
             noDevices = window.localStorage.getItem("NoDevices");
             document.getElementById("selectNoDevices").value = noDevices;
-            //FooterText
-            footerText = window.localStorage.getItem("FooterText");
-            if (footerText = ""){
-            } else {
-            document.getElementById("footerText").innerHTML = ""+footerText;
-            }
+            //Footer
             footer = window.localStorage.getItem("Footer");
             if (footer == "true"){
                 document.getElementById("Footer").style.display = "";
@@ -534,7 +565,16 @@
                 document.getElementById("Footer").style.display = "none";
                 document.getElementById("switchFooter").checked = false;
             }
-
+            //SearchBox
+            switchSearch = window.localStorage.getItem("Search");
+            if (switchSearch == "true") {
+                document.getElementById("switchSearch").checked = true;
+                formSearch.style.display = ""
+            } else {
+                document.getElementById("switchSearch").checked = false;
+                formSearch.style.display = "none"
+            }
+            
             var z;
 
             for(z = 0; z < noDevices; z++) {
@@ -640,6 +680,7 @@
 
     
         document.getElementById("formSettings").addEventListener("submit", function(){setSettings()});
+        formSearch.addEventListener("submit", submitSearchQuery);
     </script>
     
     <!-- Option 1: Bootstrap Bundle with Popper -->
