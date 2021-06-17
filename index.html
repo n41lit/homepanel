@@ -15,11 +15,15 @@
         :root{
             --back-color: rgb(0, 145, 145);
             --font-color: rgb(0, 0, 0);
+            --link-color: rgb(139, 79, 0);
+            --link-hover: rgb(94, 53, 0);
         }
 
         [data-theme="dark"] {
             --back-color: rgb(47, 30, 71) ;
             --font-color: rgb(255, 255, 255);
+            --link-color: rgb(228, 113, 19);
+            --link-hover: rgb(255, 115, 0);
         }
 
         body {
@@ -51,12 +55,12 @@
 
         }
         a{
-            color: rgb(228, 111, 15);
+            color: var(--link-color);
             text-decoration: none;
             font-weight: 100;
         }
         a:hover{
-            color:orangered;
+            color: var(--link-hover);
         }
         footer{
             position: fixed;
@@ -93,6 +97,7 @@
                         <p style="margin-bottom: 0px" >28.1°C</p>
                         <p style="margin-bottom: 0px;">20%</p>
                         <a class="bi bi-gear" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings" style="margin-top: 0px;"></a>
+
                     </div>
 
                 </div>
@@ -104,7 +109,11 @@
         <!-- Network Device List-->
         <div class="container">
             <div class="row">
-                <h2>NETWORK DEVICES</h2>
+                <div class="col text-reset">
+                    <h2>NETWORK DEVICES</h2>
+                    <a class="bi bi-pencil" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNetworkDevices" style="margin-top: 0px;"></a>
+                </div>
+                   
             </div>
             <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
                 <div class="col">
@@ -172,6 +181,7 @@
         <div class="container">
             <div class="row">
                 <h2>BOOKMARKS</h2>
+                <a class="bi bi-pencil" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookmarks" style="margin-top: 0px;"></a>
             </div>
             <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
                 <div class="col">
@@ -219,47 +229,30 @@
             </div>
 
         </div>
-
-        <!--Offcanvas Settings-->
-        <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
+        <!--Offcanvas Bookmarks-->
+        <div class="offcanvas offcanvas-start text-light bg-dark" tabindex="-1" id="offcanvasBookmarks">
             <!-- Header-->
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
+                <h5 class="offcanvas-title" id="offcanvasBookmarksLabel">Edit Bookmarks</h5>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <!-- Body-->
             <div class="offcanvas-body" style="text-align: start;">
-                <form id="formSettings">
-                    <h5>Looks</h5>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="switchDarkmode">
-                        <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Name" id="inputUsername">
-                    </div>
+                <form id="formBookmarks">
+                </form>
+            </div>
+        </div>
 
-                    <hr>
-
-                    <h5>Location and Time</h5>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="switchHumidity">
-                        <label class="form-check-label" for="switchHumidity">Show Humidity</label>
-                    </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="switch12hr" checked>
-                        <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="Temparature" id="radioCelcius" value="1">
-                        <label class="form-check-label" for="radioCelcius">Celcius</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="Temparature" id="radioFahrenheit" value="2">
-                        <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
-                    </div>
-
-                    <h5>Network Device Configuration</h5>
+        <!--Offcanvas NetworkDevices-->
+        <div class="offcanvas offcanvas-start text-light bg-dark" tabindex="-1" id="offcanvasNetworkDevices">
+            <!-- Header-->
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNetworkDevicesLabel">Edit Network Devices</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Body-->
+            <div class="offcanvas-body" style="text-align: start;">
+                <form id="formNetworkDevices">
                     <select class="form-select form" id="selectNoDevices">
                         <option selected>Number of Devices</option>
                         <option value="1">1</option>
@@ -302,9 +295,58 @@
                         <input type="text" class="form-control" placeholder="Name Network Device 8" id="nameDevice8">
                         <input type="text" class="form-control" placeholder="Image URL Device 8" id="urlPingDevice8">
                         <input type="text" class="form-control" placeholder="Link to URL Device 8" id="urlDevice8">
+                </form>
+            </div>
+        </div>
+        <!--Offcanvas Settings-->
+        <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
+            <!-- Header-->
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Body-->
+            <div class="offcanvas-body" style="text-align: start;">
+                <form id="formSettings">
+                    <h5>Looks</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchDarkmode">
+                        <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Name" id="inputUsername">
+                    </div>
 
+                    <hr>
 
-                    <h5>Bookmark Configuration</h5>
+                    <h5>Location and Time</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchHumidity">
+                        <label class="form-check-label" for="switchHumidity">Show Humidity</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switch12hr" checked>
+                        <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Temparature" id="radioCelcius" value="1">
+                        <label class="form-check-label" for="radioCelcius">Celcius</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="Temparature" id="radioFahrenheit" value="2">
+                        <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
+                    </div>
+
+                    <hr>
+
+                    <h5>Footer</h5>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchFooter">
+                        <label class="form-check-label" for="switchFooter">Show Footer</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Footer Text" id="inputFooterText">
+                    </div>
 
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
@@ -341,6 +383,8 @@
         var newHumidity = document.getElementById("switchHumidity");
         var newDarkmode = document.getElementById("switchDarkmode");
         var newUsername = document.getElementById("inputUsername");
+        var newFooter = document.getElementById("switchFooter");
+        var newFooterText = document.getElementById("inputFooterText")
         var new12hr = document.getElementById("switch12hr");
         var newcel = document.getElementById("radioCelcius");
         var newNoDevices = document.getElementById("selectNoDevices");
@@ -399,6 +443,11 @@
             window.localStorage.setItem("Humidity", newHumidity.checked);
             window.localStorage.setItem("12hr", new12hr.checked);
             window.localStorage.setItem("Darkmode", newDarkmode.checked);
+            window.localStorage.setItem("Footer", newFooter.checked);
+            if (newFooterText.value == "") {
+            } else {
+                window.localStorage.setItem("FooterText", newFooterText.value);
+            }
             if (newUsername.value == "") {
             } else {
                 window.localStorage.setItem("Username", newUsername.value);
@@ -438,6 +487,8 @@
         var hr12 = "";
         var cel = "";
         var noDevices = "";
+        var footerText = "";
+        var footer ="";
 
         function getSettings(){
             //Import Username and set Placeholder in Field
@@ -468,6 +519,21 @@
             //Get Number of configured Devices
             noDevices = window.localStorage.getItem("NoDevices");
             document.getElementById("selectNoDevices").value = noDevices;
+            //FooterText
+            footerText = window.localStorage.getItem("FooterText");
+            if (footerText = ""){
+            } else {
+            document.getElementById("footerText").innerHTML = ""+footerText;
+            }
+            footer = window.localStorage.getItem("Footer");
+            if (footer == "true"){
+                document.getElementById("Footer").style.display = "";
+                document.getElementById("switchFooter").checked = true;
+
+            } else {
+                document.getElementById("Footer").style.display = "none";
+                document.getElementById("switchFooter").checked = false;
+            }
 
             var z;
 
@@ -581,7 +647,7 @@
 
 
   </body>
-  <footer>
-    <p>made in 🇨🇭 by Dario Brasnic und Simon Camathias</p>
+  <footer id="Footer">
+    <p id="footerText">made in 🇨🇭 by Dario Brasnic und Simon Camathias</p>
 
   </footer>
