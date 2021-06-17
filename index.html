@@ -13,34 +13,40 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         :root{
-            --back-color: rgb(47, 30, 71);
+            --back-color: rgb(0, 145, 145);
+            --font-color: rgb(0, 0, 0);
         }
+
+        [data-theme="dark"] {
+            --back-color: rgb(47, 30, 71) ;
+            --font-color: rgb(255, 255, 255);
+        }
+
         body {
             font-family: "Poppins";
-            /*background: url(https://pixabay.com/get/gc7dc7a13cc78a42f2e9fa6c7fe565bcf5b876e7c98f25e8f309d96129db1b5710f5a5211c47d3694d42364d874154bbe_1920.jpg) no-repeat center center fixed;*/
             background-color: var(--back-color);
             text-align: center;
         }
         p {
-            color:white;
+            color: var(--font-color);
             font-weight: 200;
             
         }
         h1 {
-            color: white;
+            color: var(--font-color);
             font-weight: 600;
             margin-top: 12%;
             margin-bottom: 0,5%;
         }
         h2{
-            color: white;
+            color: var(--font-color);
             font-weight: 400;
             margin-bottom: 2%;
             padding-top: 2%;
             padding-bottom: 0.5%;
         }
         h3{
-            color: white;
+            color: var(--font-color);
             font-weight: 300;
 
         }
@@ -169,14 +175,12 @@
             </div>
             <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
                 <div class="col">
-                    <div class="card" style="background-color: rgb(26, 9, 43);"* id="bookmarkcontainer" >
                         <h3>Music</h3>
                         <a href="https://prontonmail.ch">spotify</a><br>
                         <a href="https://prontonmail.ch">deezer</a><br>
                         <a href="https://prontonmail.ch">tidal</a><br>
                         <a href="https://prontonmail.ch">yt music</a><br>
                         <a href="https://prontonmail.ch">pandora</a><br>
-                    </div>
                 </div>
                 <div class="col">
                     <h3>Social Media</h3>
@@ -443,6 +447,7 @@
             Darkmode = window.localStorage.getItem("Darkmode");
             if (Darkmode == "true") {
                 document.getElementById("switchDarkmode").checked = true;
+                document.body.setAttribute("data-theme", "dark")
             } else {
             document.getElementById("switchDarkmode").checked = false;
             }
