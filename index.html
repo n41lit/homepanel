@@ -113,7 +113,7 @@
         <hr>
 
         <!-- Network Device List-->
-        <div class="container">
+        <div class="container" id="containerNetworkDevices">
             <div class="row">
                 <div class="col text-reset">
                     <h2>NETWORK DEVICES</h2>
@@ -167,54 +167,41 @@
         <hr>
 
         <!-- Links-->
-        <div class="container">
+        <div class="container" id="containerBookmarks">
             <div class="row">
                 <h2>BOOKMARKS</h2>
                 <a class="bi bi-pencil" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookmarks" style="margin-top: 0px;"></a>
             </div>
             <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
                 <div class="col">
-                        <h3>Music</h3>
-                        <a href="https://prontonmail.ch">spotify</a><br>
-                        <a href="https://prontonmail.ch">deezer</a><br>
-                        <a href="https://prontonmail.ch">tidal</a><br>
-                        <a href="https://prontonmail.ch">yt music</a><br>
-                        <a href="https://prontonmail.ch">pandora</a><br>
+                    <h3 id="bookmarkTitle0"></h3>
+                    <a href="" id="bookmarkLink00" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink01" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink02" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink03" target="_blank"></a><br>
                 </div>
                 <div class="col">
-                    <h3>Social Media</h3>
-                    <a href="https://prontonmail.ch">reddit</a><br>
-                    <a href="https://prontonmail.ch">twitter</a><br>
-                    <a href="https://prontonmail.ch">tiktok</a><br>
-                    <a href="https://prontonmail.ch">youtube</a><br>
-                    <a href="https://prontonmail.ch">facebook</a><br>
-                    <a href="https://prontonmail.ch">discord</a><br>
-
+                    <h3 id="bookmarkTitle1"></h3>
+                    <a href="" id="bookmarkLink10" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink11" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink12" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink13" target="_blank"></a><br>
                 </div>
                 <div class="col">
-                    <h3>Programming</h3>
-                    <a href="https://prontonmail.ch">github</a><br>
-                    <a href="https://prontonmail.ch">devdocs</a><br>
-                    <a href="https://prontonmail.ch">w3</a><br>
+                    <h3 id="bookmarkTitle2"></h3>
+                    <a href="" id="bookmarkLink20" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink21" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink22" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink23" target="_blank"></a><br>
                 </div>
                 <div class="col">
-                    <h3>News</h3>
-                    <a href="https://prontonmail.ch">srf</a><br>
-                    <a href="https://prontonmail.ch">news</a><br>
-                    <a href="https://prontonmail.ch">bbc</a><br>
-                    <a href="https://prontonmail.ch">new york times</a><br>
+                    <h3 id="bookmarkTitle3"></h3>
+                    <a href="" id="bookmarkLink30" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink31" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink32" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink33" target="_blank"></a><br>
                 </div>
-                <div class="col">
-                    <h3>Games</h3>
-                    <a href="https://prontonmail.ch">steam</a><br>
-                    <a href="https://prontonmail.ch">gog</a><br>
-                    <a href="https://prontonmail.ch">uplay</a><br>
-                </div>
-                <div class="col" id="test3000">
-                    <h3>Storage</h3>
-                    <a href="https://prontonmail.ch">g-drive</a><br>
-                    <a href="https://prontonmail.ch">mega</a><br>
-                </div>
+                
             </div>
 
         </div>
@@ -228,6 +215,103 @@
             <!-- Body-->
             <div class="offcanvas-body" style="text-align: start;">
                 <form id="formBookmarks">
+                    <h5>Bookmark 1 Bar</h5>
+                    <div class="input-group mb-12">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 1" id="inputBookmarkBar0"><br>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 1</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink00">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl00">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 2</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink01">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl01">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 3</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink02">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl02">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 4</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink03">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl03">
+                    </div>
+                    <h5>Bookmark 2 Bar</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 2" id="inputBookmarkBar1">
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 1</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink10">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl10">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 2</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink11">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl11">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 3</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink12">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl12">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 4</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink13">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl13">
+                        </div>
+                    </div>
+                    <h5>Bookmark 3 Bar</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 3" id="inputBookmarkBar2">
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 1</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink20">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl20">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 2</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink21">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl21">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 3</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink22">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl22">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 4</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink23">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl23">
+                        </div>
+                    </div>
+                    <h5>Bookmark 4 Bar</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 4" id="inputBookmarkBar3">
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 1</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink30">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl30">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 2</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink31">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl31">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 3</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink32">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl32">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 4</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink33">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl33">
+                        </div>
+                    </div>
+                <button type="submit" class="btn btn-primary">Save</button>
                 </form>
             </div>
         </div>
@@ -308,6 +392,14 @@
                         <input class="form-check-input" type="checkbox" id="switchFooter">
                         <label class="form-check-label" for="switchFooter">Show Footer</label>
                     </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchNetworkDevices">
+                        <label class="form-check-label" for="switchNetworkDevices">Show Network Devices</label>
+                    </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchBookmark">
+                        <label class="form-check-label" for="switchBookmark">Show Bookmarks</label>
+                    </div>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Name" id="inputUsername">
                     </div>
@@ -373,8 +465,8 @@
             getSettings();
             document.getElementById("Time").innerHTML = getTime();
             document.getElementById("Date").innerHTML = getDate();
-            document.getElementById("greeting").innerHTML = getGreeting();
             pingChangeHtml();
+            getBookmarks();
 
             setInterval( () => {
                 document.getElementById("Time").innerHTML =getTime();
@@ -392,7 +484,7 @@
         var newNoDevices = document.getElementById("selectNoDevices");
         var newSwitchSearch = document.getElementById("switchSearch");
         var newSearchProvider = document.getElementById("selectSearchProvider");
-        var newPingInterval = document.getElementById("inputPingInterval")
+        var newPingInterval = document.getElementById("inputPingInterval");
         var nameDevices = new Array(8);
             nameDevices[0] = "nameDevice0";
             nameDevices[1] = "nameDevice1";
@@ -450,6 +542,8 @@
             window.localStorage.setItem("Footer", newFooter.checked);
             window.localStorage.setItem("Search", newSwitchSearch.checked);
             window.localStorage.setItem("SearchProvider", newSearchProvider.value);
+            window.localStorage.setItem("Bookmarks", document.getElementById("switchBookmark").checked);
+            window.localStorage.setItem("NetworkDevices", document.getElementById("switchNetworkDevices").checked);
             if (newPingInterval.value == "") {
             } else {
                 window.localStorage.setItem("pingInterval", newPingInterval.value);
@@ -493,16 +587,42 @@
         var noDevices = "";
         var footer ="";
         var switchSearch="";
+        var Bookmarks = "";
+        var NetworkDevices = "";
+        var Username1 = "Dario";
 
         function getSettings(){
             //Search Provider
             document.getElementById("selectSearchProvider").value = window.localStorage.getItem("SearchProvider");
             //Import Username and set Placeholder in Field
             Username1 = window.localStorage.getItem("Username");
-            document.getElementById("inputUsername").placeholder=Username1;
+            if (Username1 == null) {
+                document.getElementById("greeting").innerHTML = greeting[greetingRNG];
+            } else {
+                document.getElementById("inputUsername").placeholder=Username1;
+                document.getElementById("greeting").innerHTML = greeting[greetingRNG]+ ", "+ Username1 + "!";
+            }
             //Get Ping Interval and set the variable
             pingInterval = window.localStorage.getItem("pingInterval") * 1;
             document.getElementById("inputPingInterval").value = pingInterval + "";
+            //Show Bookmarks
+            Bookmarks = window.localStorage.getItem("Bookmarks");
+            if (Bookmarks == "true") {
+                document.getElementById("switchBookmark").checked = true;
+                document.getElementById("containerBookmarks").style.display = ""
+            } else {
+            document.getElementById("switchBookmark").checked = false;
+            document.getElementById("containerBookmarks").style.display = "none"
+            }
+            //Show NetworkDevices
+            NetworkDevices = window.localStorage.getItem("NetworkDevices");
+            if (NetworkDevices == "true") {
+                document.getElementById("switchNetworkDevices").checked = true;
+                document.getElementById("containerNetworkDevices").style.display = ""
+            } else {
+            document.getElementById("switchNetworkDevices").checked = false;
+            document.getElementById("containerNetworkDevices").style.display = "none"
+            }
 
             //Get Darkmode "boolean" and set the toggle
             Darkmode = window.localStorage.getItem("Darkmode");
@@ -543,9 +663,46 @@
             }
 
         }
+        //saveBookmarks
+        function saveBookmarks(){
+            var z;
+            for(z = 0; z < 4; z++) {
+                var bookmark = new Object();
+                bookmark.Name = document.getElementById("inputBookmarkBar" + z).value;
+                var y;
+                for(y=0; y < 4; y++) {
+                    bookmark["url" + y] = document.getElementById("inputBookmarkUrl"+ z + y).value;
+                    bookmark["name" + y] = document.getElementById("inputBookmarkLink"+ z + y).value;
+                }
+                var jsonStringToSave = JSON.stringify(bookmark);
+                window.localStorage.setItem("bookmarkBar" + z, jsonStringToSave);
+            }
+        }
+        //getBookmarks(){
+        function getBookmarks(){
+            var z;
+            var str;
+            var bookmark;
+            for(z = 0; z < 4; z++) {
+                str = window.localStorage.getItem("bookmarkBar" + z);
+                bookmark = JSON.parse(str);
+                if (bookmark == null){
+                } else {
+                document.getElementById("bookmarkTitle" + z).innerHTML = bookmark.Name;
+                document.getElementById("inputBookmarkBar" + z).value = bookmark.Name;
+                var y;
+                for(y = 0; y < 4; y++) {
+                    document.getElementById("bookmarkLink" + z + y).innerHTML = bookmark["name" + y];
+                    document.getElementById("bookmarkLink" + z + y).href = bookmark["url" + y];
+                    document.getElementById("inputBookmarkLink" + z + y).value = bookmark["name" + y];
+                    document.getElementById("inputBookmarkUrl" + z + y).value = bookmark["url" + y];
+                }
+                }
+            }
+        }  
         //PingChangeHTML
-        var z;
         function pingChangeHtml(){
+            var z;
             for(z = 0; z < noDevices; z++) {
                 document.getElementById("device"+z).innerHTML = window.localStorage.getItem("nameDevice"+z);
                 document.getElementById("url"+z).innerHTML = window.localStorage.getItem("urlDevice" + z);
@@ -603,16 +760,16 @@
             weekday[6] = "Sunday";
 
         var greeting = new Array(10);
-            greeting[0] = "Hey, ";
-            greeting[1] = "Its showtime, ";
-            greeting[2] = "Howdy, ";
-            greeting[3] = "Welcome to the club, ";
-            greeting[4] = "Hi, ";
-            greeting[5] = "Hiya! Have a nice day,";
-            greeting[6] = "Hello, ";
-            greeting[7] = "Whats up, ";
-            greeting[8] = "Long-time no see, ";
-            greeting[9] = "Moin, ";
+            greeting[0] = "Hey";
+            greeting[1] = "Its showtime";
+            greeting[2] = "Howdy";
+            greeting[3] = "Welcome to the club";
+            greeting[4] = "Hi";
+            greeting[5] = "Hiya! Have a nice day";
+            greeting[6] = "Hello";
+            greeting[7] = "Whats up";
+            greeting[8] = "Long-time no see";
+            greeting[9] = "Moin";
 
         var greetingRNG = Math.floor(greeting.length*Math.random());
 
@@ -627,14 +784,11 @@
             return "" + DAY + ", " + (DD + "." + MM + "." + YY );
         }
 
-        function getGreeting() {
-            return greeting[greetingRNG]+ Username1;
-        }
-
     
         document.getElementById("formSettings").addEventListener("submit", function(){setSettings()});
         formSearch.addEventListener("submit", submitSearchQuery);
         document.getElementById("formNetworkDevices").addEventListener("submit", function(){setSettings()} );
+        document.getElementById("formBookmarks").addEventListener("submit", function(){saveBookmarks()});
     </script>
     
     <!-- Option 1: Bootstrap Bundle with Popper -->
