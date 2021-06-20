@@ -477,7 +477,7 @@
             getSettings();
             document.getElementById("Time").innerHTML = getTime();
             document.getElementById("Date").innerHTML = getDate();
-            pingChangeHtml();
+            getNetworkDevice();
             getBookmarks();
 
             setInterval( () => {
@@ -498,47 +498,6 @@
         var newSearchProvider = document.getElementById("selectSearchProvider");
         var newPingInterval = document.getElementById("inputPingInterval");
         var newSubtitle = document.getElementById("inputSubtitle");
-
-
-
-        var nameDevices = new Array(8);
-            nameDevices[0] = "nameDevice0";
-            nameDevices[1] = "nameDevice1";
-            nameDevices[2] = "nameDevice2";
-            nameDevices[3] = "nameDevice3";
-            nameDevices[4] = "nameDevice4";
-            nameDevices[5] = "nameDevice5";
-            nameDevices[6] = "nameDevice6";
-            nameDevices[7] = "nameDevice7";
-        var urlPingDevices = new Array(8);
-            urlPingDevices[0] = "urlPingDevice0";
-            urlPingDevices[1] = "urlPingDevice1";
-            urlPingDevices[2] = "urlPingDevice2";
-            urlPingDevices[3] = "urlPingDevice3";
-            urlPingDevices[4] = "urlPingDevice4";
-            urlPingDevices[5] = "urlPingDevice5";
-            urlPingDevices[6] = "urlPingDevice6";
-            urlPingDevices[7] = "urlPingDevice7";
-
-        var urlDevices = new Array(8);
-            urlDevices[0] = "urlDevice0";
-            urlDevices[1] = "urlDevice1";
-            urlDevices[2] = "urlDevice2";
-            urlDevices[3] = "urlDevice3";
-            urlDevices[4] = "urlDevice4";
-            urlDevices[5] = "urlDevice5";
-            urlDevices[6] = "urlDevice6";
-            urlDevices[7] = "urlDevice7";        
-
-        var titleDevices = new Array(8);
-            titleDevices[0] = "titleDevice1";
-            titleDevices[1] = "titleDevice2";
-            titleDevices[2] = "titleDevice3";
-            titleDevices[3] = "titleDevice4";
-            titleDevices[4] = "titleDevice5";
-            titleDevices[5] = "titleDevice6";
-            titleDevices[6] = "titleDevice7";
-            titleDevices[7] = "titleDevice8";
 
         var urlElement = new Array(8);
             urlElement[0] = "url0";
@@ -574,35 +533,8 @@
             } else {
                 window.localStorage.setItem("Username", newUsername.value);
             }
-            if (newNoDevices == "Number of Devices")
-                {
-                } else {
-                    window.localStorage.setItem("NoDevices", newNoDevices.value);
-                }
-            for(let x of nameDevices) {
-                if (document.getElementById(x).value == ""){
-
-                } else {
-                window.localStorage.setItem(x , document.getElementById(x).value);
-                }
             }
 
-            for(let y of urlPingDevices) {
-                if (document.getElementById(y).value == ""){
-
-                } else {
-                window.localStorage.setItem(y , document.getElementById(y).value);
-                }
-            }
-            for(let k of urlDevices) {
-                if (document.getElementById(k).value == ""){
-
-                } else {
-                window.localStorage.setItem(k, document.getElementById(k).value);
-                }
-            }
-
-        }
 
         var Darkmode = "";
         var hr12 = "";
@@ -682,9 +614,6 @@
             } else {
                 document.getElementById("switch12hr").checked = false;
             }
-            //Get Number of configured Devices
-            noDevices = window.localStorage.getItem("NoDevices");
-            document.getElementById("selectNoDevices").value = noDevices
             //Footer
             footer = window.localStorage.getItem("Footer");
             if (footer == "true"){
@@ -743,34 +672,77 @@
                 }
             }
         }  
-        //PingChangeHTML
-        function pingChangeHtml(){
+        
+        //saveNetworkDevices
+        function saveNetworkDevices(){
             var z;
-            for(z = 0; z < noDevices; z++) {
-                document.getElementById("device"+z).innerHTML = window.localStorage.getItem("nameDevice"+z);
-                document.getElementById("url"+z).innerHTML = window.localStorage.getItem("urlDevice" + z);
-                document.getElementById("url"+z).href = window.localStorage.getItem("urlDevice" + z);
-                if (pingImageURL(window.localStorage.getItem("urlPingDevice"+z)) == true) {
-                    document.getElementById("BadgePing"+z).innerHTML = "&#10004 Ping Successful!";
-                    document.getElementById("BadgePing"+z).className = "badge bg-success";
+            for(z = 0; z < 8; z++) {
+                var networkDevice = new Object();
+                networkDevice.Name = document.getElementById("nameDevice" + z).value;
+                networkDevice.urlPing = document.getElementById("urlPingDevice" + z).value;
+                networkDevice.url = document.getElementById("urlDevice"+z).value;
+                var jsonStringToSave = JSON.stringify(networkDevice);
+                window.localStorage.setItem("networkDevice" + z, jsonStringToSave);
+            }
+        }
+        //getNetwork Devices
+        var networkDeviceUrl = new Object();
+        function getNetworkDevice(){
+            var z;
+            var str;
+            var networkDevice;
+            for(z = 0; z < 8; z++) {
+                str = window.localStorage.getItem("networkDevice" + z);
+                networkDevice = JSON.parse(str);
+                document.getElementById("nameDevice" + z).value = networkDevice.Name;
+                document.getElementById("urlDevice" + z).value = networkDevice.url;
+                document.getElementById("urlPingDevice" + z).value = networkDevice.urlPing;
+                if (networkDevice.urlPing == ""){
+                    document.getElementById("device" + z).style.display = "none";
+                    document.getElementById("url" + z).style.display = "none";
+                    document.getElementById("url" + z).style.display = "none";
+                    document.getElementById("BadgePing"+z).style.display = "none";
                 } else {
-                    document.getElementById("BadgePing"+z).innerHTML = "&#8252 Ping Failed";
-                    document.getElementById("BadgePing"+z).className = "badge bg-danger";
+                    document.getElementById("BadgePing"+z).style.display = "";
+                    networkDeviceUrl["url"+z] = networkDevice.urlPing;
+                    document.getElementById("device" + z).innerHTML = networkDevice.Name;
+                    document.getElementById("url" + z).href = networkDevice.url;
+                    document.getElementById("url" + z).innerHTML = networkDevice.url;
+                    document.getElementById("device" + z).style.display = "";
+                    document.getElementById("url" + z).style.display = "";
+                    document.getElementById("url" + z).style.display = "";
                 }
             }
-        }
+        }  
 
-        //PingURL
-        function pingImageURL(ImageURL) { //pingImageURL, return:boolean true = ping successful false= ping failed | parameter1:URL that should be pinged
-            var imageObject = new Image();
-            imageObject.src= "" + ImageURL;
-            if(imageObject.height>0 || imageObject.complete){
-                return true;
-            } else {
-                return false;
+        //PingChangeHTML
+        function pingChangeHtml() {
+            var z;
+            var str;
+            var Ping = new Object();
+            for(z = 0; z < 8; z++) {
+                str = window.localStorage.getItem("networkDevice" + z);
+                Ping = JSON.parse(str);
+                if (Ping.urlPing == "") {
+
+                } else {
+                if (pingImageURL(Ping.urlPing) == true) {
+                    document.getElementById("BadgePing" + z).innerHTML = "&#10004 Ping Successful!";
+                    document.getElementById("BadgePing" + z).className = "badge bg-success";
+                } else {
+                    document.getElementById("BadgePing" + z).innerHTML = "&#8252 Ping Failed";
+                    document.getElementById("BadgePing" + z).className = "badge bg-danger";
+                }
             }
+    }
+}
 
-        }
+
+
+
+        function pingImageURL(ip) {
+            }   
+
 
         //Date and Time
         function getTime() {
@@ -830,7 +802,7 @@
     
         document.getElementById("formSettings").addEventListener("submit", function(){setSettings()});
         formSearch.addEventListener("submit", submitSearchQuery);
-        document.getElementById("formNetworkDevices").addEventListener("submit", function(){setSettings()} );
+        document.getElementById("formNetworkDevices").addEventListener("submit", function(){saveNetworkDevices()} );
         document.getElementById("formBookmarks").addEventListener("submit", function(){saveBookmarks()});
     </script>
     
