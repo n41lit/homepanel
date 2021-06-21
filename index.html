@@ -39,6 +39,7 @@
             p {
                 color: var(--font-color);
                 font-weight: 400;
+                margin-bottom: 0.5%;
                 
             }
             h1 {
@@ -328,17 +329,6 @@
             <!-- Body-->
             <div class="offcanvas-body" style="text-align: start;">
                 <form id="formNetworkDevices">
-                    <select class="form-select form" id="selectNoDevices">
-                        <option selected>Number of Devices</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                    </select>
                         <input type="text" class="form-control" placeholder="Name Network Device 1" id="nameDevice0">
                         <input type="text" class="form-control" placeholder="Image URL Device 1" id="urlPingDevice0">
                         <input type="text" class="form-control" placeholder="Link to URL Device 1" id="urlDevice0">
@@ -383,7 +373,7 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <!-- Body-->
-            <div class="offcanvas-body" style="text-align: start;">
+            <div class="offcanvas-body" style="text-align: start;" >
                 <form id="formSettings">
                     <h5>Looks</h5>
                     <div class="form-check form-switch">
@@ -406,13 +396,16 @@
                         <input class="form-check-input" type="checkbox" id="switchTitle">
                         <label class="form-check-label" for="switchTitle">Show Title</label>
                     </div>
+                    <p></p>
                     <div class= "form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="switchSubtitle">
                         <label class="form-check-label" for="switchSubtitle">Show Subtitle</label>
                     </div>
+                    <p style="color: white;">Subtitle:</p>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Subtitle" id="inputSubtitle">
                     </div>
+                    <p style="color: white;">Username:<p>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Name" id="inputUsername">
                     </div>
@@ -424,6 +417,7 @@
                         <input class="form-check-input" type="checkbox" id="switch12hr" checked>
                         <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
                     </div>
+                    <p style="color: white;">Set Ping Interval:</p>
                     <div class="input-group mb-3">
                         <input type="number" class="form-control" placeholder="Ping Interval (ms)" id="inputPingInterval">
                     </div>
@@ -760,6 +754,7 @@
                 var z;
                 var str;
                 var Ping = new Object();
+    
                 for(z = 0; z < 8; z++) {
                     str = window.localStorage.getItem("networkDevice" + z);
                     if (str == null){
@@ -767,7 +762,6 @@
                     else {
                         Ping = JSON.parse(str);
                         if (Ping.urlPing == "") {
-
                         } else {
                             if (pingImageURL(Ping.urlPing) == true) {
                                 document.getElementById("BadgePing" + z).innerHTML = "&#10004 Ping Successful!";
@@ -782,7 +776,21 @@
             }
 
             function pingImageURL(ip) {
-                }   
+                var image = new Image();
+                image.src = ip;
+                var flag = false;
+                setTimeout(
+                    function() {
+                        if ( !image.complete || !image.naturalWidth ) {
+                            flag = false;
+                        }else {
+                            flag = true;
+                        }
+                    },
+                1000
+                )
+                return flag;
+            }   
 
 
             //function to get time
