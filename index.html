@@ -1,358 +1,849 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <!-- meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Include Bootstrap CSS from CDN-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        :root{
-            --back-color: rgb(47, 30, 71);
-        }
-        body {
-            font-family: "Poppins";
-            background-color: var(--back-color);
-            text-align: center;
-        }
-        p {
-            color:white;
-            font-weight: 200;
-            
-        }
-        h1 {
-            color: white;
-            font-weight: 600;
-            margin-top: 12%;
-            margin-bottom: 0,5%;
-        }
-        h2{
-            color: white;
-            font-weight: 400;
-            margin-bottom: 2%;
-            padding-top: 2%;
-            padding-bottom: 0.5%;
-        }
-        h3{
-            color: white;
-            font-weight: 300;
+        <!-- Include Bootstrap CSS from CDN-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+        <!-- Include Google Fonts for the used fonts-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- integrated css stylesheet -->
+        <style>
+            /* set the used theme (light) */
+            :root{
+                --back-color: #24848e;
+                --font-color: #000000;
+                --link-color: #000000;
+                --link-hover: #5500ff;
+                --footer-color: #3a2c56;
+            }
+            /* set the used theme (dark) */
+            [data-theme="dark"] {
+                --back-color: #3a2c56;
+                --font-color: #000000;
+                --link-color: #000000;
+                --link-hover: #24848e;
+                --footer-color: #24848e;
+            }
+            /* standard css setup */
+            body {
+                font-family: "Poppins";
+                background-color: var(--back-color);
+                text-align: center;
+            }
+            p {
+                color: var(--font-color);
+                font-weight: 400;
+                margin-bottom: 0.5%;
+                
+            }
+            h1 {
+                color: var(--font-color);
+                font-weight: 600;
+                margin-top: 8%;
+                margin-bottom: 8%;
+            }
+            h2{
+                color: var(--font-color);
+                font-weight: 400;
+                margin-bottom: 2%;
+                padding-top: 1%;
+                padding-bottom: 0.5%;
+            }
+            h3{
+                color: var(--font-color);
+                font-weight: 300;
 
-        }
-        a{
-            color: rgb(228, 111, 15);
-            text-decoration: none;
-            font-weight: 100;
-        }
-        a:hover{
-            color:orangered;
-        }
-        footer{
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 30px;
-            background-color: rgb(206, 56, 2);
-            text-align: right;
-            padding-right: 5%;
-        }
-        hr {
-            clear: both;
-            visibility: hidden;
-        }
-    </style>
+            }
+            a{
+                color: var(--link-color);
+                text-decoration: none;
+                font-weight: 300;
+            }
+            a:hover{
+                color: var(--link-hover);
+            }
+            footer{
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 30px;
+                background-color: var(--footer-color);
+                text-align: right;
+                padding-right: 5%;
+            }
+            hr {
+                clear: both;
+                visibility: hidden;
+            }
 
-    <title>Homepanel</title>
-  </head>
-  <body>
-      <br>
+        </style>
 
-    <!-- Header/Navbar--> 
+        <title>Homepanel</title>
+    </head>
+    <body>
+        <br>
+        <!-- Header/Navbar -->
         <div class="container">
             <div class="row">
                 <!-- Time -->
                 <div class="col text-start">
                     <p id="Date"></p>
                     <h1 id="greeting"></h1>
+                    <h3 id="subtitle"></h3>
                 </div>
 
                 <div class="col text-end">
                     <p id="Time" style="margin-bottom: 0px;"></p>
-                    <p style="margin-bottom: 0px" >28.1°C</p>
-                    <p style="margin-bottom: 0px;">20%</p>
                     <a class="bi bi-gear" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSettings" style="margin-top: 0px;"></a>
+
                 </div>
 
             </div>
+            <div class="row">
+                <form id="searchBox" class="input-group mb-3">
+                    <input type="search" placeholder="Search" id="searchQuery" class="form-control">
+                    <button class="btn btn-primary">Search</button>
+                </form>
+            </div>
 
         </div>
 
-    <hr>
+        <hr>
 
-    <!-- Network Device List-->
-    <div class="container">
-        <div class="row">
-            <h2>NETWORK DEVICES</h2>
-        </div>
-        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            <div class="col">
-                <h3><span class="material-icons">storage</span> NAS</h3>
-                <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>NAS #1</p>
-                <a href="https://10.10.10.2">10.10.10.10</a>
-                
+        <!-- Network Device List-->
+        <div class="container" id="containerNetworkDevices">
+            <div class="row">
+                <div class="col text-reset">
+                    <h2>NETWORK DEVICES</h2>
+                    <a class="bi bi-pencil" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNetworkDevices" style="margin-top: 0px;"></a>
+                </div>
             </div>
-            <div class="col">
-                <h3><span class="material-icons">storage</span> Plex</h3>
-                <span hidden="hidden "id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>Media Server</p>
-                <a href="https://10.10.10.10">10.10.20.5</a>
-            </div>
-            <div class="col">
-                <h3><span class="material-icons">storage</span> Paperlessng</h3>
-                <span hidden="hidden" id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span  id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>Go away papers!</p>
-                <a href="https://10.10.10.10">10.10.10.30</a>
-            </div>
-            <div class="col">
-                <h3><span class="material-icons">storage</span> Router</h3>
-                <span id="BadgePing1Hold" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span></h4>
-                <span hidden="hidden" id="BadgePing1Fail"class="badge bg-danger">&#8252 Ping Failed</span>
-                <span hidden="hidden" id="BadgePing1Success"class="badge bg-success">&#10004 Ping Successful! </span>
-                <p>Router Interface</p>
-                <a href="https://10.10.10.10">10.10.10.0</a>
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <!-- Links-->
-    <div class="container">
-        <div class="row">
-            <h2>BOOKMARKS</h2>
-        </div>
-        <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            <div class="col">
-                <h3>Music</h3>
-                <a href="https://prontonmail.ch">spotify</a><br>
-                <a href="https://prontonmail.ch">deezer</a><br>
-                <a href="https://prontonmail.ch">tidal</a><br>
-                <a href="https://prontonmail.ch">yt music</a><br>
-                <a href="https://prontonmail.ch">pandora</a><br>
-            </div>
-            <div class="col">
-                <h3>Social Media</h3>
-                <a href="https://prontonmail.ch">reddit</a><br>
-                <a href="https://prontonmail.ch">twitter</a><br>
-                <a href="https://prontonmail.ch">tiktok</a><br>
-                <a href="https://prontonmail.ch">youtube</a><br>
-                <a href="https://prontonmail.ch">facebook</a><br>
-                <a href="https://prontonmail.ch">discord</a><br>
-
-            </div>
-            <div class="col">
-                <h3>Programming</h3>
-                <a href="https://prontonmail.ch">github</a><br>
-                <a href="https://prontonmail.ch">devdocs</a><br>
-                <a href="https://prontonmail.ch">w3</a><br>
-            </div>
-            <div class="col">
-                <h3>News</h3>
-                <a href="https://prontonmail.ch">srf</a><br>
-                <a href="https://prontonmail.ch">news</a><br>
-                <a href="https://prontonmail.ch">bbc</a><br>
-                <a href="https://prontonmail.ch">new york times</a><br>
-            </div>
-            <div class="col">
-                <h3>Games</h3>
-                <a href="https://prontonmail.ch">steam</a><br>
-                <a href="https://prontonmail.ch">gog</a><br>
-                <a href="https://prontonmail.ch">uplay</a><br>
-
-            </div>
-            <div class="col">
-                <h3>Storage</h3>
-                <a href="https://prontonmail.ch">g-drive</a><br>
-                <a href="https://prontonmail.ch">mega</a><br>
-
+            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+                <div class="col">
+                    <h3 id=device0></h3>
+                    <span id="BadgePing0" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url0" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device1></h3>
+                    <span id="BadgePing1" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url1" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device2></h3>
+                    <span id="BadgePing2" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url2" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device3></h3>
+                    <span id="BadgePing3" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url3" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device4></h3>
+                    <span id="BadgePing4" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url4" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device5></h3>
+                    <span id="BadgePing5" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url5" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device6></h3>
+                    <span id="BadgePing6" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url6" href="" target="_blank"></a>
+                </div>
+                <div class="col">
+                    <h3 id=device7></h3>
+                    <span id="BadgePing7" class="badge bg-warning text-dark">&#128295 Not Pinged Yet</span><br>
+                    <a id="url7" href="" target="_blank"></a>
+                </div>
             </div>
         </div>
 
-    </div>
+        <hr>
 
-    <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
-
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <!-- Links-->
+        <div class="container" id="containerBookmarks">
+            <div class="row">
+                <h2>BOOKMARKS</h2>
+                <a class="bi bi-pencil" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBookmarks" style="margin-top: 0px;"></a>
+            </div>
+            <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+                <div class="col">
+                    <h3 id="bookmarkTitle0"></h3>
+                    <a href="" id="bookmarkLink00" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink01" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink02" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink03" target="_blank"></a><br>
+                </div>
+                <div class="col">
+                    <h3 id="bookmarkTitle1"></h3>
+                    <a href="" id="bookmarkLink10" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink11" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink12" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink13" target="_blank"></a><br>
+                </div>
+                <div class="col">
+                    <h3 id="bookmarkTitle2"></h3>
+                    <a href="" id="bookmarkLink20" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink21" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink22" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink23" target="_blank"></a><br>
+                </div>
+                <div class="col">
+                    <h3 id="bookmarkTitle3"></h3>
+                    <a href="" id="bookmarkLink30" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink31" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink32" target="_blank"></a><br>
+                    <a href="" id="bookmarkLink33" target="_blank"></a><br>
+                </div>
+            </div>
         </div>
+
+        <!--Offcanvas Bookmarks-->
+        <div class="offcanvas offcanvas-start text-light bg-dark" tabindex="-1" id="offcanvasBookmarks">
+            <!-- Header-->
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasBookmarksLabel">Edit Bookmarks</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Body-->
             <div class="offcanvas-body" style="text-align: start;">
-            <h5>Looks</h5>
-          <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="switchDarkmode" checked>
-              <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
-          </div>
-          <div class="input-group mb-3">
-            <input id="submitNameButton"type="text" class="form-control" placeholder="Name" id="inputUsername">
-            <button class="btn btn-outline-primary" type="button" id="submitNameEntry">Confirm</button>
-          </div>
-
-
-          <hr>
-          <h5>Location and Time</h5>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="switchHumidity" checked>
-            <label class="form-check-label" for="switchHumidity">Show Humidity</label>
-          </div>
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="switch12hr" checked>
-            <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
-          </div>
-          <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="radioCelcius" >
-                <label class="form-check-label" for="radioCelcius">Celcius</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="radioFahrenheit" >
-            <label class="form-check-label" for="radioFahrenheit">Fahrenheit</label>
-          </div>
-          <hr>
-
+                <form id="formBookmarks">
+                    <p style="color: white;">Bookmark Bar 1:<p>
+                    <div class="input-group mb-12">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 1" id="inputBookmarkBar0"><br>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 1</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink00">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl00">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 2</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink01">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl01">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 3</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink02">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl02">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Name/URL 4</span>
+                        <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink03">
+                        <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl03">
+                    </div>
+                    <p style="color: white;">Bookmark Bar 2:<p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 2" id="inputBookmarkBar1">
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 1</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink10">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl10">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 2</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink11">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl11">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 3</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink12">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl12">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 4</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink13">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl13">
+                        </div>
+                    </div>
+                    <p style="color: white;">Bookmark Bar 3:<p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 3" id="inputBookmarkBar2">
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 1</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink20">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl20">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 2</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink21">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl21">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 3</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink22">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl22">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 4</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink23">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl23">
+                        </div>
+                    </div>
+                    <p style="color: white;">Bookmark Bar 4:<p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name Bookmark Bar 4" id="inputBookmarkBar3">
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 1</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink30">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl30">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 2</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink31">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl31">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 3</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink32">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl32">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-text">Name/URL 4</span>
+                            <input type="text" class="form-control" placeholder="Name" id="inputBookmarkLink33">
+                            <input type="text" class="form-control" placeholder="URL" id="inputBookmarkUrl33">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
         </div>
 
+        <!--Offcanvas NetworkDevices-->
+        <div class="offcanvas offcanvas-start text-light bg-dark" tabindex="-1" id="offcanvasNetworkDevices">
+            <!-- Header-->
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNetworkDevicesLabel">Edit Network Devices</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Body-->
+            <div class="offcanvas-body" style="text-align: start;">
+                <form id="formNetworkDevices">
+                    <p style="color: white;">Device 1:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 1" id="nameDevice0">
+                    <input type="text" class="form-control" placeholder="Image URL Device 1" id="urlPingDevice0">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 1" id="urlDevice0">
+
+                    <p style="color: white;">Device 2:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 2" id="nameDevice1">
+                    <input type="text" class="form-control" placeholder="Image URL Device 2" id="urlPingDevice1">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 2" id="urlDevice1">
+
+                    <p style="color: white;">Device 3:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 3" id="nameDevice2">
+                    <input type="text" class="form-control" placeholder="Image URL Device 3" id="urlPingDevice2">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 3" id="urlDevice2">
+
+                    <p style="color: white;">Device 4:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 4" id="nameDevice3">
+                    <input type="text" class="form-control" placeholder="Image URL Device 4" id="urlPingDevice3">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 4" id="urlDevice3">
+
+                    <p style="color: white;">Device 5:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 5" id="nameDevice4">
+                    <input type="text" class="form-control" placeholder="Image URL Device 5" id="urlPingDevice4">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 5" id="urlDevice4">
+
+                    <p style="color: white;">Device 6:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 6" id="nameDevice5">
+                    <input type="text" class="form-control" placeholder="Image URL Device 6" id="urlPingDevice5">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 6" id="urlDevice5">
+
+                    <p style="color: white;">Device 7:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 7" id="nameDevice6">
+                    <input type="text" class="form-control" placeholder="Image URL Device 7" id="urlPingDevice6">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 7" id="urlDevice6">
+
+                    <p style="color: white;">Device 8:<p>
+                    <input type="text" class="form-control" placeholder="Name Network Device 8" id="nameDevice7">
+                    <input type="text" class="form-control" placeholder="Image URL Device 8" id="urlPingDevice7">
+                    <input type="text" class="form-control" placeholder="Link to URL Device 8" id="urlDevice7">
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
         </div>
-      </div>
+        <!--Offcanvas Settings-->
+        <div class="offcanvas offcanvas-end text-light bg-dark" tabindex="-1" id="offcanvasSettings" aria-labelledby="offcanvasLabel">
+            <!-- Header-->
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Settings</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <!-- Body-->
+            <div class="offcanvas-body" style="text-align: start;" >
+                <form id="formSettings">
+                    <h5>Looks</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchDarkmode">
+                        <label class="form-check-label" for="switchDarkmode">Enable Darkmode</label>
+                    </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchFooter">
+                        <label class="form-check-label" for="switchFooter">Show Footer</label>
+                    </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchNetworkDevices">
+                        <label class="form-check-label" for="switchNetworkDevices">Show Network Devices</label>
+                    </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchBookmark">
+                        <label class="form-check-label" for="switchBookmark">Show Bookmarks</label>
+                    </div>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchTitle">
+                        <label class="form-check-label" for="switchTitle">Show Title</label>
+                    </div>
+                    <p></p>
+                    <div class= "form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchSubtitle">
+                        <label class="form-check-label" for="switchSubtitle">Show Subtitle</label>
+                    </div>
+                    <p style="color: white;">Subtitle:</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Subtitle" id="inputSubtitle">
+                    </div>
+                    <p style="color: white;">Username:<p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Name" id="inputUsername">
+                    </div>
+
+                    <hr>
+
+                    <h5>Location and Time</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switch12hr" checked>
+                        <label class="form-check-label" for="switch12hr">12 Hour Clock</label>
+                    </div>
+                    <p style="color: white;">Set Ping Interval:</p>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="Ping Interval (ms)" id="inputPingInterval">
+                    </div>
+
+                    <hr>
+
+                    <h5>Search Box</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="switchSearch">
+                        <label class="form-check-label" for="switchSearch">Enable Search</label>
+                    </div>
+                    <select class="form-select" id="selectSearchProvider">
+                        <option selected>Select Search Provider</option>
+                        <option value="0">DuckDuckGo</option>
+                        <option value="1">Google</option>
+                        <option value="2">Qwant</option>
+                        </select>
+
+                        <button type="submit" class="btn btn-primary" style="vertical-align: text-bottom; position: absolute; bottom: 10px; right: 10px">Save</button>
+                        <p style="color: white; right: text; position: absolute; bottom: 10px; left: 10px">v1.0.0</p>
+                </form>
+                    
+            </div>
+            
+        </div>
+ 
+        <!-- Main JS -->
+        <script>
+            var formSearch = document.getElementById("searchBox"); //sets searchBox as var
+            var searchQuery = document.getElementById("searchQuery"); //sets search query as var
+            var pingInterval;
+
+            //Array for weekdays, rename them here
+            var weekday = new Array(7);
+                weekday[0] = "Sunday";
+                weekday[1] = "Monday";
+                weekday[2] = "Tuesday";
+                weekday[3] = "Wednesday";
+                weekday[4] = "Thursday";
+                weekday[5] = "FriYAY";
+                weekday[6] = "Sunday";
+                
+            //Array for greeting texts, rename them here
+            var greeting = new Array(10);
+                greeting[0] = "Hey";
+                greeting[1] = "Its showtime";
+                greeting[2] = "Howdy";
+                greeting[3] = "Welcome to the club";
+                greeting[4] = "Hi";
+                greeting[5] = "Hiya! Have a nice day";
+                greeting[6] = "Hello";
+                greeting[7] = "Whats up";
+                greeting[8] = "Long-time no see";
+                greeting[9] = "Moin";
+
+            var greetingRNG = Math.floor(greeting.length*Math.random()); //set variable for the randomness
+            
+            //Search Provider Array
+            var searchProvider = new Array(3);
+                searchProvider[0] = "https://www.duckduckgo.com/";
+                searchProvider[1] = "https://google.com/search?q=";
+                searchProvider[2] = "https://qwant.com/?q=";
+
+            //Function for searchbar / searchquery
+            function submitSearchQuery(event) {
+                event.preventDefault();
+                //saves the url & provider as string in var
+                var searchurl = searchProvider[window.localStorage.getItem("SearchProvider")] + searchQuery.value;
+                //opens window with var, "_blank" = new tab
+                var win = window.open(searchurl, "_blank");
+                //focus the new window
+                win.focus();
+            }
+
+            //Loading routine, loads on every restart
+            window.onload = () => {
+                //load functions
+                document.getElementById("Time").innerHTML = getTime();
+                document.getElementById("Date").innerHTML = getDate();
+                getSettings();
+                getNetworkDevice();
+                getBookmarks();
+
+                //Interval for clock
+                setInterval( () => {
+                    document.getElementById("Time").innerHTML =getTime();
+                },100)
+                //Interval for the ping function
+                setInterval( () => {
+                    pingChangeHtml();
+                }, pingInterval)
+            }
+
+            //Function to save the settings in the local storage
+            function setSettings(){
+
+                //set items with inputs from the form 
+                window.localStorage.setItem("12hr", document.getElementById("switch12hr").checked);
+                window.localStorage.setItem("Darkmode", document.getElementById("switchDarkmode").checked);
+                window.localStorage.setItem("Footer", document.getElementById("switchFooter").checked);
+                window.localStorage.setItem("Search", document.getElementById("switchSearch").checked);
+                window.localStorage.setItem("SearchProvider", document.getElementById("selectSearchProvider").value);
+                window.localStorage.setItem("Bookmarks", document.getElementById("switchBookmark").checked);
+                window.localStorage.setItem("NetworkDevices", document.getElementById("switchNetworkDevices").checked);
+                window.localStorage.setItem("showTitle", document.getElementById("switchTitle").checked);
+                window.localStorage.setItem("showSubtitle", document.getElementById("switchSubtitle").checked);
+                window.localStorage.setItem("subtitle", document.getElementById("inputSubtitle").value);
+                window.localStorage.setItem("Username", document.getElementById("inputUsername").value);
+
+                //ping interval must be < 2000ms 
+                if (document.getElementById("inputPingInterval").value <= 2000) {
+                    window.localStorage.setItem("pingInterval", 2000);
+                } else {
+                    window.localStorage.setItem("pingInterval", document.getElementById("inputPingInterval").value);
+                    }
+                }
+
+                var hr12 = ""; //if 12 is enabled, boolean
+            
+            //Function to load all the saved settings from browsers localStorage
+            function getSettings(){
+                //Search Provider
+                document.getElementById("selectSearchProvider").value = window.localStorage.getItem("SearchProvider");
+                
+                // get title settings
+                // toggle title visibility
+                if (window.localStorage.getItem("showTitle") == "true") {
+                    document.getElementById("switchTitle").checked = true;
+                    document.getElementById("greeting").style.display = "";
+                } else {
+                    document.getElementById("switchTitle").checked = false;
+                    document.getElementById("greeting").style.display = "none";
+                }
+                
+                // set subtitle field in settings
+                document.getElementById("inputSubtitle").value = window.localStorage.getItem("subtitle");
+                // set html elements to the subtitle
+                document.getElementById("subtitle").innerHTML = window.localStorage.getItem("subtitle");
+                
+                
+                // toggle subtitle visibility
+                if (window.localStorage.getItem("showSubtitle") == "true") {
+                    document.getElementById("switchSubtitle").checked = true;
+                    document.getElementById("subtitle").style.display = "";
+                } else {
+                    document.getElementById("switchSubtitle").checked = false;
+                    document.getElementById("subtitle").style.display = "none";
+                }
+                
+                //Import username and set placeholder in field
+                var Username = "User";
+                Username = window.localStorage.getItem("Username");
+
+                // When no username is configured, it just shows the greeting
+                if (Username == null || Username == "") {
+                    document.getElementById("greeting").innerHTML = greeting[greetingRNG];
+                } else {
+                    document.getElementById("inputUsername").placeholder=Username;
+                    document.getElementById("greeting").innerHTML = greeting[greetingRNG]+ ", "+ Username + "!";
+                }
+                
+                //Get ping interval and set the value
+                pingInterval = window.localStorage.getItem("pingInterval") * 1; //*1 to change string to num
+                document.getElementById("inputPingInterval").value = pingInterval + "";
+                
+                //toggle bookmark visibility
+                var Bookmarks = "";
+                Bookmarks = window.localStorage.getItem("Bookmarks");
+                if (Bookmarks == "true") {
+                    document.getElementById("switchBookmark").checked = true;
+                    document.getElementById("containerBookmarks").style.display = ""
+                } else {
+                    document.getElementById("switchBookmark").checked = false;
+                    document.getElementById("containerBookmarks").style.display = "none"
+                }
+                
+                //toggle network devices visibility
+                var NetworkDevices = window.localStorage.getItem("NetworkDevices");
+                if (NetworkDevices == "true") {
+                    document.getElementById("switchNetworkDevices").checked = true;
+                    document.getElementById("containerNetworkDevices").style.display = ""
+                } else {
+                    document.getElementById("switchNetworkDevices").checked = false;
+                    document.getElementById("containerNetworkDevices").style.display = "none"
+                }
+                
+                // toggle darkmode and set the toggle in settings
+                var Darkmode = window.localStorage.getItem("Darkmode");
+                if (Darkmode == "true") {
+                    document.getElementById("switchDarkmode").checked = true;
+                    document.body.setAttribute("data-theme", "dark"); //set css theme
+                } else {
+                    document.getElementById("switchDarkmode").checked = false;
+                }
+
+                //Get 12 Hr an set the toggle and var
+                hr12 = window.localStorage.getItem("12hr");
+                if (hr12 == "true"){
+                    document.getElementById("switch12hr").checked = true;
+                } else {
+                    document.getElementById("switch12hr").checked = false;
+                }
+
+                //sets footer toggle and visibility
+                var footer ="";
+                footer = window.localStorage.getItem("Footer");
+                if (footer == "true"){
+                    document.getElementById("Footer").style.display = "";
+                    document.getElementById("switchFooter").checked = true;
+                    
+                } else {
+                    document.getElementById("Footer").style.display = "none";
+                    document.getElementById("switchFooter").checked = false;
+                }
+
+                //sets search box visibility and toggle
+                var switchSearch="";
+                switchSearch = window.localStorage.getItem("Search");
+                if (switchSearch == "true") {
+                    document.getElementById("switchSearch").checked = true;
+                    formSearch.style.display = ""
+                } else {
+                    document.getElementById("switchSearch").checked = false;
+                    formSearch.style.display = "none"
+                }
+                
+            }
+
+            // function to save bookmark links
+            function setBookmarks(){
+                var z;
+                // loop 4 times
+                for(z = 0; z < 4; z++) {
+                    //make new object
+                    var bookmark = new Object();
+                    //set the "name" to the value of the input
+                    bookmark.Name = document.getElementById("inputBookmarkBar" + z).value;
+                    //loop for the four links in each bookmark
+                    var y;
+                    for(y=0; y < 4; y++) {
+                        bookmark["url" + y] = document.getElementById("inputBookmarkUrl"+ z + y).value;
+                        bookmark["name" + y] = document.getElementById("inputBookmarkLink"+ z + y).value;
+                    }
+                    //make a string out of the bookmark object
+                    var jsonStringToSave = JSON.stringify(bookmark);
+                    //save to local storage
+                    window.localStorage.setItem("bookmarkBar" + z, jsonStringToSave);
+                }
+            }
+            // function to get the bookmarks saved in local storage
+            function getBookmarks(){
+                var z;
+                var str;
+                var bookmark;
+                for(z = 0; z < 4; z++) {
+                    str = window.localStorage.getItem("bookmarkBar" + z);
+                    //parse saved stingified object in var
+                    bookmark = JSON.parse(str);
+                    //if empty nothing shoud happen
+                    if (bookmark == null){
+                    } else {
+                        //set title
+                        document.getElementById("bookmarkTitle" + z).innerHTML = bookmark.Name;
+                        document.getElementById("inputBookmarkBar" + z).value = bookmark.Name;
+                        //four times loop for each link
+                        var y;
+                        for(y = 0; y < 4; y++) {
+                            document.getElementById("bookmarkLink" + z + y).innerHTML = bookmark["name" + y];
+                            document.getElementById("bookmarkLink" + z + y).href = bookmark["url" + y];
+                            document.getElementById("inputBookmarkLink" + z + y).value = bookmark["name" + y];
+                            document.getElementById("inputBookmarkUrl" + z + y).value = bookmark["url" + y];
+                        }
+                    }
+                }
+            }  
+            
+            //function to save the NetworkDevices configured
+            function setNetworkDevices(){
+                var z;
+                // for loop, rep 8 times
+                for(z = 0; z < 8; z++) {
+                    //make new object
+                    var networkDevice = new Object();
+                    //load configured inputs into object
+                    networkDevice.Name = document.getElementById("nameDevice" + z).value;
+                    networkDevice.urlPing = document.getElementById("urlPingDevice" + z).value;
+                    networkDevice.url = document.getElementById("urlDevice"+z).value;
+                    //obj to str
+                    var jsonStringToSave = JSON.stringify(networkDevice);
+                    //save to localStorage
+                    window.localStorage.setItem("networkDevice" + z, jsonStringToSave);
+                }
+            }
+
+            function getNetworkDevice(){
+                var networkDeviceUrl = new Object();
+                var z;
+                var str;
+                var networkDevice;
+                for(z = 0; z < 8; z++) {
+                    //get string from local storage
+                    str = window.localStorage.getItem("networkDevice" + z);
+                    if (str == null) {
+                    } else {
+                        networkDevice = JSON.parse(str);
+                        //set values in settings
+                        document.getElementById("nameDevice" + z).value = networkDevice.Name;
+                        document.getElementById("urlDevice" + z).value = networkDevice.url;
+                        document.getElementById("urlPingDevice" + z).value = networkDevice.urlPing;
+                        //if Image URL is empty, dont show them
+                        if (networkDevice.urlPing == ""){
+                            document.getElementById("device" + z).style.display = "none";
+                            document.getElementById("url" + z).style.display = "none";
+                            document.getElementById("url" + z).style.display = "none";
+                            document.getElementById("BadgePing"+z).style.display = "none";
+                        } else { //else display elements and fill in html
+                            document.getElementById("BadgePing"+z).style.display = "";
+                            networkDeviceUrl["url"+z] = networkDevice.urlPing;
+                            document.getElementById("device" + z).innerHTML = networkDevice.Name;
+                            document.getElementById("url" + z).href = networkDevice.url;
+                            document.getElementById("url" + z).innerHTML = networkDevice.url;
+                            document.getElementById("device" + z).style.display = "";
+                            document.getElementById("url" + z).style.display = "";
+                            document.getElementById("url" + z).style.display = "";
+                        }
+                    }
+                }
+            }  
+
+            //Change HTML code after ping
+            function pingChangeHtml() {
+                var z;
+                var str;
+                var Ping;
     
-    <!-- Main JS -->
-    <script>
-        //eventHandler
+                for(z = 0; z < 8; z++) {
+                    str = window.localStorage.getItem("networkDevice" + z);
+                    if (str == null){
+                    }
+                    else {
+                        Ping = JSON.parse(str);
+                        if (Ping.urlPing == "") {
+                        } else {
+                            if (pingImageURL(Ping.urlPing) == true) {
+                                document.getElementById("BadgePing" + z).innerHTML = "&#10004 Ping Successful!";
+                                document.getElementById("BadgePing" + z).className = "badge bg-success";
+                            } else {
+                                document.getElementById("BadgePing" + z).innerHTML = "&#8252 Ping Failed";
+                                document.getElementById("BadgePing" + z).className = "badge bg-danger";
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            //returns boolean wether image could be loaded
+            function pingImageURL(ip) {
+                //new Image Object
+                var ImageObject = new Image();
+                ImageObject.src = ip
+                //.height of image must be bigger as 0
+                if(ImageObject.height>0){
+                    return true; }
+                else {
+                    return false;
+                }
+            }   
 
 
+            //function to get time
+            function getTime() {
+                let date = new Date(),
+                    sec = date.getSeconds(),
+                    min = date.getMinutes(),
+                    hour = date.getHours();
 
-        //setLinks
+                var ampm = hour >= 12 ? "pm" : "am"; //var for pm/am snippet bihind numbers
 
-        function setLink(linkName){
-            localStorage.setItem("Name", linkName);
-        }
-        
-        //getLinks
+                //Return and Fromat Output
+                if (hr12 == "true"){
+                    hour = hour % 12;
+                    hour = hour ? hour : 12; //0 to 12 conversion
+                    return""+
+                        hour + ":" + (min < 10 ?("0" + min): min) + ":" + (sec < 10 ?("0" + sec) : sec) + " " + ampm;
+                } else {
+                    return"" +
+                        (hour < 10 ? ("0" + hour) : hour)+ ":" + (min < 10 ?("0" + min) : min) + ":" + (sec < 10 ?("0" + sec) : sec);
+                }
+            }
 
-        function getLink(){
-            var linkName = localStorage.getItem("Name");
-            return linkName
-        }
+            //function to get the Date and format it correctly
+            function getDate() {
+                //make new date obj
+                var dt = new Date
+                // set the variables to the date propertys and slice them
+                var DD = ("0" + dt.getDate()).slice(-2);
+                var MM = ("0" + (dt.getMonth() + 1)).slice(-2);
+                var YY = dt.getFullYear();
+                var DAY = weekday[dt.getDay()];
+                //return
+                return "" + DAY + ", " + (DD + "." + MM + "." + YY );
+            }
 
-        //PingFunction
-        {
-        var image = new Image();
-        var Ping1Fail = document.getElementById("BadgePing1Fail")
-        var Ping1Success = document.getElementById("BadgePing1Success")
-        var Ping1Hold = document.getElementById("BadgePing1Hold")
-        image.src = "http://10.10.10.2:5000/webman/favicon.ico?v=25426"
-        setTimeout
-        (
-            function()
-            {
-                if ( !image.complete || !image.naturalWidth )
-                    Ping1Hold.hidden = "hidden",
-                    Ping1Fail.hidden = "";
-                else
-                    Ping1Hold.hidden = "hidden",
-                    Ping1Success.hidden = "";
-                },
-                1000
-            )
-        }
+            //Event Listeners
+            document.getElementById("formSettings").addEventListener("submit", function(){setSettings()});
+            formSearch.addEventListener("submit", submitSearchQuery);
+            document.getElementById("formNetworkDevices").addEventListener("submit", function(){setNetworkDevices()} );
+            document.getElementById("formBookmarks").addEventListener("submit", function(){setBookmarks()});
 
-        //GET and SET Settings in localStorage
-        var Username = document.getElementById("inputUsername");
+        </script>
 
-        function setSettings() {
-            alert("It has worked");
-        }
-
-        //Date and Time
-
-        function getTime() {
-            let date = new Date(),
-                sec = date.getSeconds(),
-                min = date.getMinutes(),
-                hour = date.getHours();
-
-            return"" +
-                (hour < 10 ? ("0" + hour) : hour)+ ":" + (min < 10 ?("0" + min) : min) + ":" + (sec < 10 ?("0" + sec) : sec);
-        }
-
-        var weekday = new Array(7);
-            weekday[0] = "Sunday";
-            weekday[1] = "Monday";
-            weekday[2] = "Tuesday";
-            weekday[3] = "Wednesday";
-            weekday[4] = "Thursday";
-            weekday[5] = "FriYAY";
-            weekday[6] = "Sunday";
-
-        var greeting = new Array(10);
-            greeting[0] = "Hey, master";
-            greeting[1] = "Its showtime!";
-            greeting[2] = "Howdy, Partner";
-            greeting[3] = "Welcome to the club";
-            greeting[4] = "Sup?";
-            greeting[5] = "Hiya! Have a nice day.";
-            greeting[6] = "Hello Stranger";
-            greeting[7] = "Whats up buttercup?";
-            greeting[8] = "Long-time no see";
-            greeting[9] = "Moin";
-
-        var greetingRNG = Math.floor(greeting.length*Math.random())
-
-        function getDate() {
-            var dt = new Date
-
-            var DD = ("0" + dt.getDate()).slice(-2);
-            var MM = ("0" + (dt.getMonth() + 1)).slice(-2);
-            var YY = dt.getFullYear();
-            var DAY = weekday[dt.getDay()];
-
-            return "" + DAY + ", " + (DD + "." + MM + "." + YY );
-        }
-
-        function getGreeting() {
-            return greeting[greetingRNG]
-        }
+        <!-- load Bootstrap/propper bundle from CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
+    </body>
+    <footer id="Footer">
+        <p id="footerText">made in 🇨🇭 by Dario Brasnic und Simon Camathias</p>
 
-        window.onload = () => {
-            document.getElementById("Time").innerHTML = getTime();
-            document.getElementById("Date").innerHTML = getDate();
-            document.getElementById("greeting").innerHTML = getGreeting();
-
-            setInterval( () => {
-                document.getElementById("Time").innerHTML =getTime();
-            },100)
-        }
-
-        document.getElementById("inputUsername").addEventListener("change", setSettings());
-    </script>
-    
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-
-  </body>
-  <footer>
-    <p>made in 🇨🇭 by Dario Brasnic und Simon Camathias</p>
-
-  </footer>
+    </footer>
