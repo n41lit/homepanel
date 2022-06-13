@@ -1,3 +1,6 @@
+#Decapitated!
+This repo is no longer actively maintained. As a possible alternative look into HomeAssistant.
+
 # Welcome to homepanel!
 [Get Started with "Homepanel"](https://github.com/bl44ck/homepanel/wiki/Getting-Started)
 
